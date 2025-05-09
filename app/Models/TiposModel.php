@@ -1,18 +1,20 @@
 <?php
-  namespace App\Models;
 
-  use CodeIgniter\Model;
+namespace App\Models;
 
-  class TiposModel extends Model {
-    protected $table = 'tipo';
-    protected $allowedFields = ['tipo', 'id_user'];
-    protected $primaryKey = 'id';
+use CodeIgniter\Model;
 
-    public function getTipos(int $id)
-    {
-      $todas = $this->select(['id', 'tipo'])->where('id_user', $id)->get()->getResultArray();
+class TiposModel extends Model
+{
+   protected $table = 'types';
+   protected $allowedFields = ['type', 'id_user'];
+   protected $primaryKey = 'id';
+
+   public function getTipos(int $id)
+   {
+      $todas = $this->select(['id', 'type'])
+         ->get()
+         ->getResultArray();
       return $todas;
-    }
-
-    
-  }
+   }
+}
