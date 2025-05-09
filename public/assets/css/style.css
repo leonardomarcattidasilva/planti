@@ -1,0 +1,306 @@
+* {
+   padding: 0;
+   margin: 0;
+}
+
+body {
+   background-color: rgb(218, 255, 218);
+   background-image: url('https://www.iconpacks.net/icons/2/free-plant-icon-1573-thumb.png');
+   background-repeat: no-repeat;
+   background-position: 210% 35%;
+   background-size: 80%;
+   display: grid;
+   grid-template-columns: 1fr;
+   min-height: 100vh;
+   grid-template-rows: 50px minmax(calc(100vh - 80px), auto) 30px;
+}
+
+h2,
+h3,
+form,
+section>a {
+   margin: 10px;
+}
+
+
+form {
+   /* display: flex;
+   flex-flow: column nowrap;
+   justify-content: center;
+   align-content: space-between; */
+   padding: 10px 20px;
+   border-radius: 15px;
+   box-shadow: 0 0 10px gray;
+   background-color: rgba(255, 255, 255, 0.3);
+}
+
+#login {
+   display: flex;
+   flex-flow: column nowrap;
+   justify-content: center;
+}
+
+header {
+   background-color: rgb(94, 179, 94);
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px;
+   height: 50px;
+   box-shadow: 0 0 10px black;
+}
+
+h2 {
+   color: #198754;
+}
+
+#headerRight {
+   display: flex;
+   flex-flow: row nowrap;
+   align-items: center;
+   justify-content: center;
+}
+
+#headerRight>p {
+   margin: 0 10px;
+   padding: 0;
+}
+
+header h1 {
+   color: white;
+}
+
+#detalhes>section {
+   margin-top: 20px;
+   display: flex;
+   flex-flow: column nowrap;
+   justify-content: center;
+   align-items: center;
+   width: 80%;
+   margin: 0 auto;
+}
+
+
+
+#detalhes>section h1,
+#detalhes>section h2 {
+   padding: 0;
+   margin: 0;
+}
+
+#lista_detalhes {
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: space-between;
+   align-items: flex-end;
+}
+
+#success {
+   display: flex;
+   flex-flow: column nowrap;
+   align-items: center;
+   justify-content: center;
+}
+
+#success>section {
+   display: flex;
+   flex-flow: column nowrap;
+   align-items: center;
+   justify-content: center;
+}
+
+#success>section>div {
+   display: flex;
+   flex-flow: row nowrap;
+   align-items: center;
+   justify-content: space-evenly;
+   width: 100%;
+}
+
+#success a {
+   text-decoration: none;
+}
+
+footer {
+   background-color: rgb(94, 179, 94);
+   height: 30px;
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+}
+
+footer a {
+   color: white !important;
+}
+
+
+#home_logo>a {
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: space-between;
+   align-items: stretch;
+   width: auto;
+   height: 50px;
+}
+
+#home_logo a {
+   padding: 0px;
+   margin: 0px;
+   text-decoration: none;
+}
+
+#fundo {
+   opacity: .2;
+   height: 700px;
+   position: fixed;
+   top: 5%;
+   left: 50%;
+   z-index: -1;
+   width: 90vw;
+   float: right;
+   margin-top: 30px;
+}
+
+#card_planta {
+   margin: 0 auto;
+   margin-top: 20px;
+}
+
+.card {
+   width: 650px;
+   border-radius: 25px 25px 0 0;
+   box-shadow: 0 0 10px gray;
+   height: auto;
+}
+
+.card_head {
+   box-shadow: 0 0 10px gray;
+   height: 100px;
+   background-image: linear-gradient(to top, lightgreen, white);
+   border-bottom: 2px solid green;
+   border-radius: 25px 25px 0 0;
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: center;
+   align-items: flex-end;
+}
+
+.card_head>img {
+   width: 25%;
+   margin: 0 auto;
+}
+
+.card_title {
+   font-size: 25px;
+   color: darkgreen;
+   margin-bottom: 10px;
+   margin-left: 10px;
+}
+
+.card_text {
+   font-size: 20px;
+   text-indent: 1rem;
+   margin: 10px 5px;
+}
+
+.card_footer {
+   background-image: linear-gradient(to bottom, silver, gray);
+   height: 50px;
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: space-evenly;
+   align-items: center;
+}
+
+.card_footer>a,
+.card_footer>a:visited {
+   color: white;
+   text-decoration: none;
+}
+
+.card_detalhes {
+   margin: 20px;
+   padding: 20px;
+   box-shadow: 0 0 10px black;
+   border-radius: 15px;
+   background-color: #eee;
+   max-width: 350px;
+   min-width: 250px;
+}
+
+#del_planta,
+#del_planta>section {
+   display: flex;
+   flex-flow: column nowrap;
+   justify-content: center;
+   align-items: center;
+}
+
+#del_planta>section>form>div {
+   width: 100%;
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: space-around;
+   align-items: center;
+}
+
+#del_planta {
+   min-height: calc(100vh - 80px);
+}
+
+.pagination {
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: center;
+   align-items: center;
+}
+
+.pagination>li {
+   padding: 5px 10px;
+   margin: 0 5px;
+   border-radius: 5px;
+}
+
+.pagination>li:not(.active)>a {
+   color: black;
+}
+
+.pagination>li:not(.active) {
+   border: 1px solid #aaa;
+}
+
+.pagination>li>a {
+   text-decoration: none;
+
+}
+
+.active {
+   background-color: lightgreen;
+   border: 1px solid darkgreen;
+}
+
+.active>a {
+   color: darkgreen;
+}
+
+button {
+   margin-left: 10px;
+}
+
+.small {
+   color: tomato;
+}
+
+#flashbad {
+   width: 100%;
+   text-align: center;
+   margin-top: 10px;
+}
+
+#flashbad>p {
+   background-color: lightcoral !important;
+   color: darkred;
+}
