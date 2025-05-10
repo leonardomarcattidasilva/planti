@@ -7,10 +7,10 @@
             <?= csrf_field() ?>
             <div class="mb-3">
                <label for="tipo" class="form-label">Tipo:</label>
-               <input type="text" name="tipo" id="tipo" class="form-control">
-               <small class="small"><?= session()->get('err')['tipo'] ?? '' ?></small>
+               <input type="text" name="type" id="type" class="form-control">
+               <small class="small"><?= session()->get('err')['type'] ?? '' ?></small>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 d-flex justify-content-end">
                <button type="submit" class="btn btn-success">Cadastrar</button>
             </div>
          </form>

@@ -7,12 +7,12 @@ use CodeIgniter\Model;
 class TiposModel extends Model
 {
    protected $table = 'types';
-   protected $allowedFields = ['type', 'id_user'];
+   protected $allowedFields = ['type'];
    protected $primaryKey = 'id';
 
    public function getTipos(int $id)
    {
-      $todas = $this->select(['id', 'type'])
+      $todas = $this->db->table('types t')->select(['t.id', 't.type'])->join('users_types ut', 'id = ut.id_type')->where('ut.id_user', $id)
          ->get()
          ->getResultArray();
       return $todas;

@@ -19,6 +19,7 @@
                <label for="tipo" class="form-label">Tipo:</label>
                <div class="d-flex flex-row align-items-center">
                   <select name="tipo" id="tipo" class="form-control" required>
+                     <option value="0" selected disabled>Selecione tipo</option>
                      <?php
                      if (isset($tipos) && count($tipos) > 0) {
                         foreach ($tipos as $key => $value) { ?>

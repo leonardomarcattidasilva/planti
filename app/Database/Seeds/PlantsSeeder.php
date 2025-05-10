@@ -18,7 +18,7 @@ class PlantsSeeder extends Seeder
          ['name' => 'Planta 7', 'id_type' => rand(1, 4), 'id_user' => rand(1, 2)],
          ['name' => 'Planta 8', 'id_type' => rand(1, 4), 'id_user' => rand(1, 2)],
          ['name' => 'Planta 9', 'id_type' => rand(1, 4), 'id_user' => rand(1, 2)],
-         ['name' => 'Planta 11', 'id_type' => rand(1, 4), 'id_user' => rand(1, 2)],
+         ['name' => 'Planta 10', 'id_type' => rand(1, 4), 'id_user' => rand(1, 2)],
 
       ];
 

@@ -21,7 +21,7 @@
                   ?>
                </select>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 d-flex justify-content-end">
                <button type="submit" class="btn btn-success" id="btn_consulta">Consultar</button>
             </div>
          </form>
