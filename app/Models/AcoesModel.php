@@ -25,14 +25,14 @@ class AcoesModel extends Model
       $this->where('id_plant', $id_plant)->delete();
    }
 
-   public function adicionarAcao(int $id, string $acao)
+   public function adicionarAcao(int $id, string $action)
    {
-      $this->insert(['acao' => $acao, 'id_plant' => $id]);
+      $this->insert(['action' => $action, 'id_plant' => $id]);
    }
 
-   public function addCuidadoTipo(int $id, string $acao)
+   public function addCuidadoTipo(int $id, string $action)
    {
-      $this->insert(['acao' => $acao, 'id_plant' => $id]);
+      $this->insert(['action' => $action, 'id_plant' => $id]);
    }
 
    public function getCuidado(int $id)
@@ -40,9 +40,9 @@ class AcoesModel extends Model
       return $this->where('id', $id)->get()->getRowArray();
    }
 
-   public function updateCuidado(int $id, string $nome)
+   public function updateCuidado(int $id, string $action, string $start_date, string $deadline)
    {
-      $this->set('acao', $nome)->where('id', $id)->update();
+      $this->where('id', $id)->set(['action' => $action, 'start_date' => $start_date, 'deadline' => $deadline])->update();
    }
 
    public function deleteCuidado(int $id)

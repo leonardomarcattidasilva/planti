@@ -22,12 +22,12 @@ section>a {
    margin: 10px;
 }
 
+hr {
+   color: darkgreen;
+}
+
 
 form {
-   /* display: flex;
-   flex-flow: column nowrap;
-   justify-content: center;
-   align-content: space-between; */
    padding: 10px 20px;
    border-radius: 15px;
    box-shadow: 0 0 10px gray;

@@ -10,7 +10,7 @@
             <ol>
                <?php
                foreach ($cuidados as $key => $value) { ?>
-                  <li class="card_text"><?= $value['acao'] ?></li>
+                  <li class="card_text"><?= $value['action'] ?></li>
                <?php  };
                ?>
             </ol>

@@ -12,16 +12,20 @@ class ActionsController extends BaseController
    private object $model;
    private ?array $data;
 
+   private function checkView(string $file)
+   {
+      if (!is_file(APPPATH . 'Views/' . $file . '.php')) {
+         throw new \CodeIgniter\Exceptions\PageNotFoundException($file);
+      };
+   }
+
    public function cadastrar()
    {
       $this->model = model(PlantasModel::class);
       $this->data['tab'] = 'Planti - Sucesso';
       $this->data['title'] = 'Sucesso!';
 
-      if (!is_file(APPPATH . 'Views/success.php')) {
-         throw new \CodeIgniter\Exceptions\PageNotFoundException('Success');
-      };
-
+      $this->checkView('Success');
       $post = $this->request->getPost(['planta', 'tipo']);
 
       if (!empty($post) && $this->validateData($post, ['planta' => 'required', 'tipo' => 'required'], ['planta' => ['required' => 'O campo é obrigatório'], 'tipo' => ['required' => 'O campo é obrigatório']]) && $post['tipo'] != 0) {
@@ -34,10 +38,8 @@ class ActionsController extends BaseController
 
    public function cadastrarTipo()
    {
-      if (!is_file(APPPATH . 'Views/success.php')) {
-         throw new \CodeIgniter\Exceptions\PageNotFoundException('Success');
-      };
 
+      $this->checkView('Success');
       $this->model = model(TiposModel::class);
       $post = $this->request->getPost(['type']);
 
@@ -80,9 +82,8 @@ class ActionsController extends BaseController
    public function cadastrarCuidado()
    {
       \helper('form');
-      if (!is_file(APPPATH . 'Views/successAction.php')) {
-         throw new \CodeIgniter\Exceptions\PageNotFoundException('SuccessAction');
-      };
+
+      $this->checkView('SuccessAction');
 
       $post = $this->request->getPost(['acao', 'id']);
       $validData = $this->validateData($post, ['id' => 'required', 'acao' => 'required'], ['acao' => ['required' => 'O campo é obrigatório']]);
@@ -118,13 +119,12 @@ class ActionsController extends BaseController
    public function updateCuidado()
    {
       $this->model = \model(AcoesModel::class);
-      $edit = $this->request->getPost(['id', 'idplanta', 'acao']);
-
-      if ($this->request->getMethod() == 'post' && $this->validateData($edit, ['id' => 'required', 'acao' => 'required'])) {
-         $this->model->updateCuidado(intval($this->request->getPost('id')), strval($this->request->getPost('acao')));
+      $edit = $this->request->getPost(['id', 'id_plant', 'action', 'start_date', 'deadline']);
+      if ($this->request->getMethod() == 'POST' && $this->validateData($edit, ['id' => 'required', 'action' => 'required'])) {
+         $this->model->updateCuidado(intval($edit['id']), strval($edit['action']), $edit['start_date'], $edit['deadline']);
       };
 
-      return redirect()->to('/detalhes?id=' . $this->request->getPost('idplanta'));
+      return redirect()->to('/detalhes?id=' . $this->request->getPost('id_plant'));
    }
 
    public function cuidadosTodas()
