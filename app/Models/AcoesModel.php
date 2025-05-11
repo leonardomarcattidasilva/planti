@@ -25,9 +25,9 @@ class AcoesModel extends Model
       $this->where('id_plant', $id_plant)->delete();
    }
 
-   public function adicionarAcao(int $id, string $action)
+   public function adicionarAcao(int $id, string $action, string $start_date, string $deadline)
    {
-      $this->insert(['action' => $action, 'id_plant' => $id]);
+      $this->insert(['action' => $action, 'id_plant' => $id, 'start_date' => $start_date, 'deadline' => $deadline]);
    }
 
    public function addCuidadoTipo(int $id, string $action)

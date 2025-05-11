@@ -8,7 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->post('cadastrar', 'ActionsController::cadastrar', ['as' => 'cadastrar']);
 $routes->post('updatePlanta', 'ActionsController::updatePlanta');
 $routes->post('confirmadeletar', 'ActionsController::confirmaDeletar');
-$routes->post('cadastrarCuidado', 'ActionsController::cadastrarCuidado');
+$routes->post('cadastrarCuidado', 'ActionsController::cadastrarCuidado', ['as' => 'cadastrarCuidado']);
 $routes->post('updateCuidado', 'ActionsController::updateCuidado');
 $routes->post('cuidados', 'ActionsController::cuidadosTodas', ['as' => 'cuidadosTodas']);
 $routes->post('cadastrarTipo', 'ActionsController::cadastrarTipo', ['as' => 'cadastrarTipo']);

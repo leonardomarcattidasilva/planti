@@ -82,15 +82,13 @@ class ActionsController extends BaseController
    public function cadastrarCuidado()
    {
       \helper('form');
-
-      $this->checkView('SuccessAction');
-
-      $post = $this->request->getPost(['acao', 'id']);
-      $validData = $this->validateData($post, ['id' => 'required', 'acao' => 'required'], ['acao' => ['required' => 'O campo é obrigatório']]);
-      if ($this->request->getMethod() == 'post' && $validData) {
+      $this->checkView('successAction');
+      $post = $this->request->getPost(['action', 'id_plant', 'start_date', 'deadline']);
+      $validData = $this->validateData($post, ['id_plant' => 'required', 'action' => 'required'], ['action' => ['required' => 'O campo é obrigatório']]);
+      if ($this->request->getMethod() == 'POST' && $validData) {
          $this->model = model(AcoesModel::class);
-         $this->model->adicionarAcao(intval($post['id']), strval($post['acao']));
-         return redirect()->to("/successAction?id=" . $post['id']);
+         $this->model->adicionarAcao(intval($post['id_plant']), strval($post['action']), 'start_date', 'deadline');
+         return redirect()->to("/successAction?id=" . $post['id_plant']);
       }
       return \redirect()->route('addCuidados')->with('errors', \session()->set('err', $this->validator->getErrors()));
    }
@@ -98,18 +96,18 @@ class ActionsController extends BaseController
    public function cuidadosTipo()
    {
 
-      $post = $this->request->getPost(['tipo', 'acao']);
+      $post = $this->request->getPost(['tipo', 'action']);
 
-      if ($this->request->getMethod() == 'post' && $this->validateData($post, ['tipo' => 'required', 'acao' => 'required'])) {
+      if ($this->request->getMethod() == 'post' && $this->validateData($post, ['tipo' => 'required', 'action' => 'required'])) {
          $this->model = model(PlantasModel::class);
          $tipo = strval($this->request->getPost('tipo'));
          $list = $this->model->getPlantasByTipo($tipo);
 
-         $acao = strval($this->request->getPost('acao'));
+         $action = strval($this->request->getPost('action'));
          $this->model = model(AcoesModel::class);
 
          foreach ($list as $key => $value) {
-            $this->model->addCuidadoTipo($value['id'], $acao);
+            $this->model->addCuidadoTipo($value['id'], $action);
          };
 
          return redirect()->route('successTipo');
@@ -130,14 +128,14 @@ class ActionsController extends BaseController
    public function cuidadosTodas()
    {
 
-      $post = $this->request->getPost(['acao']);
+      $post = $this->request->getPost(['action']);
 
       $this->model = \model(PlantasModel::class);
-      if (!empty($post)  && $this->validateData($post, ['acao' => 'required'])) {
+      if (!empty($post)  && $this->validateData($post, ['action' => 'required'])) {
          $todasPlantas = $this->model->getTodasID(\session()->get('id'));
          $this->model = model(AcoesModel::class);
          foreach ($todasPlantas as $key => $value) {
-            $this->model->adicionarAcao($value['id'], strval($this->request->getPost('acao')));
+            $this->model->adicionarAcao($value['id'], strval($this->request->getPost('action')));
          };
          return redirect()->route('home');
       };

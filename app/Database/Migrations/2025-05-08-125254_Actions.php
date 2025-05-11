@@ -14,9 +14,10 @@ class Actions extends Migration
          'id_plant' => ['type' => 'int', 'unsigned' => true],
          'start_date' => ['type' => 'date'],
          'deadline' => ['type' => 'date'],
+         'done' => ['type' => 'TINYINT', 'constraint' => 1, 'default' => 0],
       ]);
 
-      $this->forge->addKey('id');
+      $this->forge->addKey('id', true);
       $this->forge->addForeignKey('id_plant', 'plants', 'id', 'CASCADE', 'CASCADE');
       $this->forge->createTable('actions');
    }
