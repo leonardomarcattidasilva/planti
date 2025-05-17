@@ -15,7 +15,7 @@ use CodeIgniter\I18n\Time;
             foreach ($detalhes as $key => $value) { ?>
                <div class="card_detalhes">
                   <div>
-                     <h5>Cuidado <?= $value['id'] ?></h5>
+                     <h5><?= $value['title'] ?></h5>
                      <p><?= $value['action'] ?></p>
                      <p>Feito em: <?= Time::parse($value['start_date'], 'America/Sao_Paulo')->format('d/m/y');  ?></p>
                      <p>Repetir em: <?= Time::parse($value['deadline'], 'America/Sao_Paulo')->format('d/m/y');  ?></p>
@@ -24,6 +24,7 @@ use CodeIgniter\I18n\Time;
                   <hr>
                   <div>
                      <a href="editarCuidado?id=<?= $value['id'] ?>&id_plant=<?= $id_plant ?>" id="btn_detalhes" class="btn btn-success">Editar</a>
+                     <button type="button" class="btn btn-warning">Feito</button>
                      <button type="button" class="btn btn-danger btnDelCuidado" data-bs-toggle="modal" data-bs-target="#delCuidadoModal" value="<?= $value['id'] ?>">Deletar</button>
                   </div>
                </div>

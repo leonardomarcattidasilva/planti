@@ -19,6 +19,11 @@ class ActionsController extends BaseController
       };
    }
 
+   public function getAlerts()
+   {
+      $this->model = model(AcoesModel::class);
+   }
+
    public function cadastrar()
    {
       $this->model = model(PlantasModel::class);
@@ -38,7 +43,6 @@ class ActionsController extends BaseController
 
    public function cadastrarTipo()
    {
-
       $this->checkView('Success');
       $this->model = model(TiposModel::class);
       $post = $this->request->getPost(['type']);

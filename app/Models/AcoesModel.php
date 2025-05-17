@@ -3,11 +3,28 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use CodeIgniter\I18n\Time;
 
 class AcoesModel extends Model
 {
    protected $table = 'actions';
    protected $allowedFields = ['action', 'id_plant', 'start_date', 'deadline'];
+
+   public function getAlerts(string $id)
+   {
+      $builder = $this->db->table('actions a');
+      $builder->select('*');
+      $builder->where('a.done', 0);
+      $builder->where('deadline', '<=', Time::today()->toDateString());
+      $builder->whereIn('a.id_plant', function ($subQuery) use ($id) {
+         return $subQuery->select('id')
+            ->from('plants')
+            ->where('id_user', $id);
+      });
+
+      $query = $builder->get();
+      return $query->getResult();
+   }
 
    public function getCuidados(int $id)
    {

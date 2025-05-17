@@ -43,6 +43,8 @@ class PagesController extends BaseController
       $this->checkView('home');
 
       if (\session()->has('id')) {
+         $this->model = model(AcoesModel::class);
+         $this->data['alerts'] = $this->model->getAlerts(session()->get('id'));
          $this->data['tab'] = 'Planti - Home';
          $this->model = model(PlantasModel::class);
          $this->data['plantas'] = $this->model->getUserPlantas(session()->get('id'));

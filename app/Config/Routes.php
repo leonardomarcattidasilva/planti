@@ -20,7 +20,7 @@ $routes->get('/', 'PagesController::home', ['as' => 'home']);
 $routes->get('tipos', 'PagesController::cadastroTipos', ['as' => 'tipo']);
 $routes->get('cadastroPlanta', 'PagesController::cadastroPlanta', ['as' => 'cadastroPlanta']);
 $routes->get('planta', 'PagesController::verPlanta');
-$routes->get('detalhes', 'PagesController::detalhes');
+$routes->get('detalhes', 'PagesController::detalhes', ['as' => 'detalhes']);
 $routes->get('deletar', 'PagesController::deletar');
 $routes->get('editar', 'PagesController::getPlanta');
 $routes->get('adicionarCuidados', 'PagesController::adicionarCuidados', ['as' => 'addCuidados']);

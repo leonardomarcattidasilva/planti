@@ -10,6 +10,7 @@ class Actions extends Migration
    {
       $this->forge->addField([
          'id' => ['type' => 'int', 'unsigned' => true, 'auto_increment' => true],
+         'title' => ['type' => 'varchar', 'constraint' => 50],
          'action' => ['type' => 'text'],
          'id_plant' => ['type' => 'int', 'unsigned' => true],
          'start_date' => ['type' => 'date'],

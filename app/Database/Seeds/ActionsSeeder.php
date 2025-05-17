@@ -9,11 +9,11 @@ class ActionsSeeder extends Seeder
    public function run()
    {
       $actons = [
-         ['action' => 'Ação A', 'id_plant' => rand(1, 10), 'start_date' => '2025-04-12', 'deadline' => '2025-05-02', 'done' => \rand(0, 1)],
-         ['action' => 'Ação B', 'id_plant' => rand(1, 10), 'start_date' => '2025-03-08', 'deadline' => '2025-04-20', 'done' => \rand(0, 1)],
-         ['action' => 'Ação C', 'id_plant' => rand(1, 10), 'start_date' => '2025-05-01', 'deadline' => '2025-06-15', 'done' => \rand(0, 1)],
-         ['action' => 'Ação D', 'id_plant' => rand(1, 10), 'start_date' => '2025-02-19', 'deadline' => '2025-03-10', 'done' => \rand(0, 1)],
-         ['action' => 'Ação E', 'id_plant' => rand(1, 10), 'start_date' => '2025-04-05', 'deadline' => '2025-04-25', 'done' => \rand(0, 1)],
+         ['title' => 'Ação A', 'action' => 'Foi feita a ação A', 'id_plant' => rand(1, 10), 'start_date' => '2025-04-12', 'deadline' => '2025-05-02', 'done' => \rand(0, 1)],
+         ['title' => 'Ação B', 'action' => 'Foi feita a ação B', 'id_plant' => rand(1, 10), 'start_date' => '2025-03-08', 'deadline' => '2025-04-20', 'done' => \rand(0, 1)],
+         ['title' => 'Ação C', 'action' => 'Foi feita a ação C', 'id_plant' => rand(1, 10), 'start_date' => '2025-05-01', 'deadline' => '2025-06-15', 'done' => \rand(0, 1)],
+         ['title' => 'Ação D', 'action' => 'Foi feita a ação D', 'id_plant' => rand(1, 10), 'start_date' => '2025-02-19', 'deadline' => '2025-03-10', 'done' => \rand(0, 1)],
+         ['title' => 'Ação E', 'action' => 'Foi feita a ação E', 'id_plant' => rand(1, 10), 'start_date' => '2025-04-05', 'deadline' => '2025-04-25', 'done' => \rand(0, 1)],
       ];
 
       $this->db->table('actions')->insertBatch($actons);
