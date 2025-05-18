@@ -21,8 +21,8 @@ class UsersSeeder extends Seeder
             'password' => \base64_encode('123456')
          ],
          [
-            'name' => \base64_encode('Leonardo Marcatti da Silva'),
-            'email' => \base64_encode('leonardomarcatti@test.com'),
+            'name' => \base64_encode('User C'),
+            'email' => \base64_encode('userc@test.com'),
             'password' => \base64_encode('123456')
          ],
       ];

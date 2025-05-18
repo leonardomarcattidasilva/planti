@@ -9,8 +9,12 @@
             <div class="mb-3">
                <input type="number" name="id" id="id" value="<?= $_GET['id'] ?>" hidden>
                <input type="number" name="id_plant" id="idplanta" value="<?= $_GET['id_plant'] ?>" hidden>
+               <div class="mb-3">
+                  <label for="title" class="form-label">Título</label>
+                  <input type="text" name="title" id="title" class="form-control" value="<?= $cuidado['title'] ?>">
+               </div>
                <label for="action" class="form-label">Cuidado:</label>
-               <textarea name="action" id="action" class="form-control" required cols="30" rows="10"><?= $cuidado['action'] ?></textarea>
+               <textarea name="action" id="action" class="form-control" required cols="30" rows="5"><?= $cuidado['action'] ?></textarea>
             </div>
             <div class="mb-3 d-flex flex-row justify-content-between">
                <div>

@@ -9,10 +9,14 @@
             <h5 class="card_title"><?= $planta['name'] ?></h5>
             <ol>
                <?php
-               foreach ($cuidados as $key => $value) { ?>
-                  <li class="card_text"><?= $value['title'] ?></li>
-               <?php  };
-               ?>
+
+               if (count($cuidados) > 0) {
+                  foreach ($cuidados as $key => $value) { ?>
+                     <li class="card_text"><?= $value['title'] ?></li>
+                  <?php  }
+               } else { ?>
+                  <p>Não há cuidados cadastrados</p>
+               <?php } ?>
             </ol>
             <div class="card_footer">
                <a href="detalhes?id=<?= $_GET['id'] ?>" id="btn_detalhes" class="btn btn-success">Cuidados - Detalhes</a>

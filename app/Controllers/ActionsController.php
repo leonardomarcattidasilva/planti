@@ -32,6 +32,15 @@ class ActionsController extends BaseController
       $this->model = model(AcoesModel::class);
    }
 
+   public function deletarCuidado()
+   {
+      $id = \filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
+      $idplanta = \filter_input(\INPUT_GET, 'id_plant', \FILTER_SANITIZE_NUMBER_INT);
+      $this->model = \model(AcoesModel::class);
+      $this->model->deleteCuidado($id);
+      return redirect()->to('/planta?id=' . $idplanta);
+   }
+
    public function cadastrar()
    {
       $this->model = model(PlantasModel::class);
@@ -71,9 +80,9 @@ class ActionsController extends BaseController
    public function updatePlanta()
    {
       $this->model = model(PlantasModel::class);
-
-      if ($this->request->getMethod() == 'post' && $this->validate(['id' => 'required', 'nome' => 'required'])) {
-         $this->model->updatePlanta(intval($this->request->getPost('id')), strval($this->request->getPost('nome')));
+      $post = $this->request->getPost(['name', 'id']);
+      if ($this->request->getMethod() == 'POST' && $this->validateData($post, ['id' => 'required', 'name' => 'required'])) {
+         $this->model->updatePlanta(intval($post['id']), $post['name']);
       };
 
       return redirect()->route('home');
@@ -81,9 +90,10 @@ class ActionsController extends BaseController
 
    public function confirmaDeletar()
    {
-      if ($this->request->getMethod() == 'post' && $this->validate(['id' => 'required'])) {
-         $this->model = \model(AcoesModel::class);
-         $this->model->deletaAcoesPlanta(intval($this->request->getPost('id')));
+      $id = $this->request->getPost(['id']);
+      if ($this->request->getMethod() == 'POST' && $this->validateData($id, ['id' => 'required'])) {
+         // $this->model = \model(AcoesModel::class);
+         // $this->model->deletaAcoesPlanta(intval($this->request->getPost('id')));
          $this->model = \model(PlantasModel::class);
          $this->model->deletaPlanta(intval($this->request->getPost('id')));
       };
@@ -95,11 +105,11 @@ class ActionsController extends BaseController
    {
       \helper('form');
       $this->checkView('successAction');
-      $post = $this->request->getPost(['action', 'id_plant', 'start_date', 'deadline']);
+      $post = $this->request->getPost(['action', 'id_plant', 'start_date', 'deadline', 'title']);
       $validData = $this->validateData($post, ['id_plant' => 'required', 'action' => 'required'], ['action' => ['required' => 'O campo é obrigatório']]);
       if ($this->request->getMethod() == 'POST' && $validData) {
          $this->model = model(AcoesModel::class);
-         $this->model->adicionarAcao(intval($post['id_plant']), strval($post['action']), 'start_date', 'deadline');
+         $this->model->adicionarAcao(intval($post['id_plant']), strval($post['action']), $post['start_date'], $post['deadline'], $post['title'],);
          return redirect()->to("/successAction?id=" . $post['id_plant']);
       }
       return \redirect()->route('addCuidados')->with('errors', \session()->set('err', $this->validator->getErrors()));
@@ -129,12 +139,25 @@ class ActionsController extends BaseController
    public function updateCuidado()
    {
       $this->model = \model(AcoesModel::class);
-      $edit = $this->request->getPost(['id', 'id_plant', 'action', 'start_date', 'deadline']);
+      $edit = $this->request->getPost(['id', 'id_plant', 'action', 'start_date', 'deadline', 'title']);
       if ($this->request->getMethod() == 'POST' && $this->validateData($edit, ['id' => 'required', 'action' => 'required'])) {
-         $this->model->updateCuidado(intval($edit['id']), strval($edit['action']), $edit['start_date'], $edit['deadline']);
+         $this->model->updateCuidado(intval($edit['id']), strval($edit['action']), $edit['start_date'], $edit['deadline'], $edit['title']);
       };
 
       return redirect()->to('/detalhes?id=' . $this->request->getPost('id_plant'));
+   }
+
+   public function editarCuidado()
+   {
+      $id = filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
+      $this->model = \model(AcoesModel::class);
+      $this->data['cuidado'] = $this->model->getCuidado(\intval($id));
+      $this->data['title'] = 'Editar Cuidado';
+      $this->data['tab'] = 'Planti - Cuidados';
+
+      $this->checkView('editCuidado');
+
+      return view('Views/templates/header', $this->data) . view('Views/editCuidado') . view('Views/templates/footer');
    }
 
    public function cuidadosTodas()

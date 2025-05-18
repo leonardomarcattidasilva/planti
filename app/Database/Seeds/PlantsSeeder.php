@@ -10,6 +10,7 @@ class PlantsSeeder extends Seeder
    {
       $plants = [
          ['name' => 'Planta 1', 'id_type' => rand(1, 4), 'id_user' => rand(1, 3)],
+         ['name' => 'Planta 2', 'id_type' => rand(1, 4), 'id_user' => rand(1, 3)],
          ['name' => 'Planta 3', 'id_type' => rand(1, 4), 'id_user' => rand(1, 3)],
          ['name' => 'Planta 4', 'id_type' => rand(1, 4), 'id_user' => rand(1, 3)],
          ['name' => 'Planta 5', 'id_type' => rand(1, 4), 'id_user' => rand(1, 3)],

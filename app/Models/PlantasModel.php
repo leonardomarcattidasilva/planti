@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class PlantasModel extends Model
 {
    protected $table = 'plants';
-   protected $allowedFields = ['name', 'type', 'id_user'];
+   protected $allowedFields = ['name', 'id_type', 'id_user'];
    protected $primaryKey = 'id';
 
    public function getUserPlantas(int $id): array
@@ -15,7 +15,7 @@ class PlantasModel extends Model
       return $this->orderBy('name', 'ASC')->where('id_user', $id)->findAll();
    }
 
-   public function getPlantas(int $id = 0)
+   public function getPlantas(string $id = '0')
    {
       if ($id == 0) {
          return $this->orderBy('name', 'ASC')->findAll();
@@ -24,14 +24,14 @@ class PlantasModel extends Model
       return $this->where('id', $id)->first();
    }
 
-   public function getPlantasByTipo(int $tipo)
+   public function getPlantasByTipo(int $type)
    {
-      return $this->select('id')->where('tipo', $tipo)->findAll();
+      return $this->select('id')->where('type', $type)->findAll();
    }
 
-   public function addPlanta(string $name, int $tipo, int $id)
+   public function addPlanta(string $name, int $type, int $id)
    {
-      return $this->insert(['name' => $name, 'tipo' => $tipo, 'id_user' => $id]);
+      return $this->insert(['name' => $name, 'type' => $type, 'id_user' => $id]);
    }
 
    public function deletaPlanta(int $id)
@@ -41,7 +41,7 @@ class PlantasModel extends Model
 
    public function updatePlanta(int $id, string $name)
    {
-      $this->set('name', $name)->where('id', $id)->update();
+      $this->where('id', $id)->set(['name' => $name])->update();
    }
 
    public function getTodasID(int $id)

@@ -8,8 +8,12 @@
             <?= csrf_field() ?>
             <div class="mb-3">
                <input type="number" name="id_plant" id="id_plant" value="<?= $_GET['id'] ?>" hidden>
+               <div class="mb-3">
+                  <label for="title" class="form-label">Title:</label>
+                  <input type="text" name="title" id="title" class="form-control" />
+               </div>
                <label for="action" class="form-label">Cuidado:</label>
-               <textarea name="action" id="action" class="form-control" cols="30" rows="10"></textarea>
+               <textarea name="action" id="action" class="form-control" cols="30" rows="5"></textarea>
                <small><?= session()->get('err')['action'] ?? '' ?></small>
                <div class="d-flex flex-row justify-content-between mt-3">
                   <div>

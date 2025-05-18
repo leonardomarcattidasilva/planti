@@ -57,10 +57,9 @@ class PagesController extends BaseController
 
    public function cadastroPlanta()
    {
+      helper('form');
 
       $this->checkView('cadastroPlanta');
-
-      helper('form');
       $this->data['tab'] = 'Planti - Cadastro';
       $this->data['title'] = 'Cadastro de Plantas';
       $this->model = model(TiposModel::class);
@@ -88,7 +87,7 @@ class PagesController extends BaseController
          $this->data['tab'] = 'Planti - Planta';
          $this->model = \model(PlantasModel::class);
          $this->data['planta'] = $this->model->getPlantas($id);
-         $this->data['cuidados'] = $this->getAcoes($id);
+         $this->data['cuidados'] = $this->getAcoes(\intval($id));
          $r ? $this->data['mensagem'] = 'Não há detalhes' : '';
 
          if (empty($this->data['planta'])) {
@@ -103,7 +102,7 @@ class PagesController extends BaseController
       };
    }
 
-   public function getAcoes(int $id)
+   public function getAcoes(string $id)
    {
       $this->model = \model(AcoesModel::class);
       return $this->model->getCuidados($id);
@@ -174,29 +173,6 @@ class PagesController extends BaseController
       $this->data['id'] = $id;
 
       return view('Views/templates/header', $this->data) . view('Views/adicionaCuidado') . view('Views/templates/footer');
-   }
-
-   public function editarCuidado()
-   {
-      $id = filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
-      $this->model = \model(AcoesModel::class);
-      $this->data['cuidado'] = $this->model->getCuidado($id);
-      $this->data['title'] = 'Editar Cuidado';
-      $this->data['tab'] = 'Planti - Cuidados';
-
-      $this->checkView('editCuidado');
-
-      return view('Views/templates/header', $this->data) . view('Views/editCuidado') . view('Views/templates/footer');
-   }
-
-   public function deletarCuidado()
-   {
-      $id = \filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
-      $idplanta = \filter_input(\INPUT_GET, 'idplanta', \FILTER_SANITIZE_NUMBER_INT);
-      $this->model = \model(AcoesModel::class);
-      $this->model->deleteCuidado($id);
-
-      return redirect()->to('/detalhes?id=' . $idplanta);
    }
 
    public function cuidadosTodas()
