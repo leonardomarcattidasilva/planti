@@ -15,6 +15,11 @@ body {
    grid-template-rows: 50px minmax(calc(100vh - 80px), auto) 30px;
 }
 
+a {
+   color: black;
+   text-decoration: none;
+}
+
 h2,
 h3,
 form,

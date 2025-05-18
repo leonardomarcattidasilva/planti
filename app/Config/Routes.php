@@ -16,6 +16,8 @@ $routes->post('cuidadosTipo', 'ActionsController::cuidadosTipo');
 $routes->post('loginAction', 'AuthController::loginAction', ['as' => 'loginAction']);
 $routes->post('logupAction', 'AuthController::logupAction', ['as' => 'logupAction']);
 
+
+$routes->get('done', 'ActionsController::done', ['as' => 'done']);
 $routes->get('/', 'PagesController::home', ['as' => 'home']);
 $routes->get('tipos', 'PagesController::cadastroTipos', ['as' => 'tipo']);
 $routes->get('cadastroPlanta', 'PagesController::cadastroPlanta', ['as' => 'cadastroPlanta']);

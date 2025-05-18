@@ -8,7 +8,7 @@ use CodeIgniter\I18n\Time;
 class AcoesModel extends Model
 {
    protected $table = 'actions';
-   protected $allowedFields = ['action', 'id_plant', 'start_date', 'deadline'];
+   protected $allowedFields = ['action', 'id_plant', 'start_date', 'deadline', 'done'];
 
    public function getAlerts(string $id)
    {
@@ -26,15 +26,21 @@ class AcoesModel extends Model
       return $query->getResult();
    }
 
+   public function done(int $id)
+   {
+      // dd($id);
+      return $this->update($id, ['done' => 1]);
+   }
+
    public function getCuidados(int $id)
    {
-      return $this->Where('id_plant', $id)->limit(3)->orderBy('id', 'desc')->get()->getResultArray();
+      return $this->Where('id_plant', $id)->limit(3)->orderBy('deadline', 'asc')->get()->getResultArray();
    }
 
    public function getDetalhes(int $id, int $page)
    {
       $p = ($page === 0) ? 0 : ($page - 1) * 4;
-      return $this->Where('id_plant', $id)->orderBy('id', 'desc')->limit(4, $p)->get()->getResultArray();
+      return $this->Where('id_plant', $id)->orderBy('deadline', 'asc')->limit(4, $p)->get()->getResultArray();
    }
 
    public function deletaAcoesPlanta(int $id_plant)

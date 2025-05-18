@@ -19,6 +19,14 @@ class ActionsController extends BaseController
       };
    }
 
+   public function done()
+   {
+      $id = \filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
+      $this->model = model(AcoesModel::class);
+      $this->model->done($id);
+      return redirect()->back();
+   }
+
    public function getAlerts()
    {
       $this->model = model(AcoesModel::class);

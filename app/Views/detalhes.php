@@ -24,7 +24,10 @@ use CodeIgniter\I18n\Time;
                   <hr>
                   <div>
                      <a href="editarCuidado?id=<?= $value['id'] ?>&id_plant=<?= $id_plant ?>" id="btn_detalhes" class="btn btn-success">Editar</a>
-                     <button type="button" class="btn btn-warning">Feito</button>
+                     <?php
+                     if ($value['deadline'] <= Time::today()->toDateString() && !$value['done']) { ?>
+                        <button type="button" class="btn btn-warning"><a href="<?= site_url('done?id=' . $value['id']) ?>">Feito</a></button>
+                     <?php } ?>
                      <button type="button" class="btn btn-danger btnDelCuidado" data-bs-toggle="modal" data-bs-target="#delCuidadoModal" value="<?= $value['id'] ?>">Deletar</button>
                   </div>
                </div>
