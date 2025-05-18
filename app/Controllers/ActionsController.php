@@ -47,11 +47,10 @@ class ActionsController extends BaseController
       $this->data['tab'] = 'Planti - Sucesso';
       $this->data['title'] = 'Sucesso!';
 
-      $this->checkView('Success');
-      $post = $this->request->getPost(['planta', 'tipo']);
-
-      if (!empty($post) && $this->validateData($post, ['planta' => 'required', 'tipo' => 'required'], ['planta' => ['required' => 'O campo é obrigatório'], 'tipo' => ['required' => 'O campo é obrigatório']]) && $post['tipo'] != 0) {
-         $this->model->addPlanta(\strval($this->request->getPost('planta')), intval($this->request->getPost('tipo')), \session()->get('id'));
+      $this->checkView('success');
+      $post = $this->request->getPost(['name', 'type']);
+      if (!empty($post) && $this->validateData($post, ['name' => 'required', 'type' => 'required'], ['name' => ['required' => 'O campo é obrigatório'], 'type' => ['required' => 'O campo é obrigatório']])) {
+         $this->model->addPlanta($post['name'], $post['type'], \session()->get('id'));
          return redirect()->to('/success');
       };
 
@@ -60,12 +59,12 @@ class ActionsController extends BaseController
 
    public function cadastrarTipo()
    {
-      $this->checkView('Success');
-      $this->model = model(TiposModel::class);
-      $post = $this->request->getPost(['type']);
 
+      $this->checkView('successTipo');
+      $this->model = model(TiposModel::class);
+      $post = $this->request->getPost([\trim('type')]);
       if (!empty($post) && $this->validateData($post, ['type' => 'required|min_length[3]'], ['type' => ['required' => 'O campo é obrigatório!', 'min_length' => 'Digite pelo menos 3 caracteres']])) {
-         $result = $this->model->insert(['type' => $this->request->getPost('type')], true);
+         $result = $this->model->insert(['type' => $post['type']], true);
          if ($result) {
             $sessionID = \session()->get('id');
             $this->model = model(UsersTypesModel::class);
@@ -73,8 +72,7 @@ class ActionsController extends BaseController
          }
          return redirect()->to('/successTipo');
       };
-
-      return \redirect()->route('type')->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
+      return \redirect()->route('tipo')->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
    }
 
    public function updatePlanta()

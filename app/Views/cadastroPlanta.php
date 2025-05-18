@@ -7,18 +7,19 @@
             <?= csrf_field() ?>
             <div class="mb-3">
                <label for="planta" class="form-label">Planta:</label>
-               <input type="text" name="planta" id="planta" class="form-control">
-               <small class="small"><?= session()->get('err')['planta'] ?? '' ?></small>
+               <input type="text" name="name" id="name" class="form-control">
+               <small class="small"><?= session()->get('err')['name'] ?? '' ?></small>
+
                <?php
                if (isset(validation_errors()['planta'])) { ?>
                   <small><?= validation_errors()['planta'] ?></small>
                <?php }
                ?>
             </div>
-            <div class="mb-3 col-6">
+            <div class="mb-3">
                <label for="tipo" class="form-label">Tipo:</label>
                <div class="d-flex flex-row align-items-center">
-                  <select name="tipo" id="tipo" class="form-control" required>
+                  <select name="type" id="tipe" class="form-control" required>
                      <option value="0" selected disabled>Selecione tipo</option>
                      <?php
                      if (isset($tipos) && count($tipos) > 0) {

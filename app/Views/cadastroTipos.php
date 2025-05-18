@@ -6,7 +6,7 @@
          <form action="cadastrarTipo" method="post">
             <?= csrf_field() ?>
             <div class="mb-3">
-               <label for="tipo" class="form-label">Tipo:</label>
+               <label for="type" class="form-label">Tipo:</label>
                <input type="text" name="type" id="type" class="form-control">
                <small class="small"><?= session()->get('err')['type'] ?? '' ?></small>
             </div>

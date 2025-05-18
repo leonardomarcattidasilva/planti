@@ -31,7 +31,7 @@ class PlantasModel extends Model
 
    public function addPlanta(string $name, int $type, int $id)
    {
-      return $this->insert(['name' => $name, 'type' => $type, 'id_user' => $id]);
+      return $this->insert(['name' => $name, 'id_type' => $type, 'id_user' => $id]);
    }
 
    public function deletaPlanta(int $id)
