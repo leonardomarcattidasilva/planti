@@ -16,6 +16,8 @@ class Actions extends Migration
          'start_date' => ['type' => 'date'],
          'deadline' => ['type' => 'date'],
          'done' => ['type' => 'TINYINT', 'constraint' => 1, 'default' => 0],
+         'created_at' => ['type' => 'datetime', 'null' => true],
+         'updated_at' => ['type' => 'datetime', 'null' => true],
       ]);
 
       $this->forge->addKey('id', true);

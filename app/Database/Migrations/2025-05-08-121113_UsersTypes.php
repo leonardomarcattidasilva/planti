@@ -10,7 +10,9 @@ class UsersTypes extends Migration
    {
       $this->forge->addField([
          'id_user' => ['type' => 'int', 'unsigned' => \true],
-         'id_type' => ['type' => 'int', 'unsigned' => \true]
+         'id_type' => ['type' => 'int', 'unsigned' => \true],
+         'created_at' => ['type' => 'datetime', 'null' => true],
+         'updated_at' => ['type' => 'datetime', 'null' => true],
       ]);
 
       $this->forge->addKey(['id_user', 'id_type'], \true);

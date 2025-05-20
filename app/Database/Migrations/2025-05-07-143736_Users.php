@@ -12,7 +12,9 @@ class Users extends Migration
          'id' => ['type' => 'int', 'unsigned' => true, 'auto_increment' => true],
          'name' => ['type' => 'varchar', 'constraint' => 50],
          'email' => ['type' => 'varchar', 'constraint' => 50],
-         'password' => ['type' => 'varchar', 'constraint' => 50]
+         'password' => ['type' => 'varchar', 'constraint' => 50],
+         'created_at' => ['type' => 'datetime', 'null' => true],
+         'updated_at' => ['type' => 'datetime', 'null' => true],
       ]);
       $this->forge->addKey('id', true);
       $this->forge->createTable('users');

@@ -57,19 +57,36 @@ class ActionsController extends BaseController
       return \redirect()->route('cadastroPlanta')->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
    }
 
+   private function checkType(string $type)
+   {
+      $this->model = model(TiposModel::class);
+      $type = $this->model->select('id')->where('type', $type)->get()->getRowArray();
+      return $type;
+   }
+
+   /**
+    **todo = verificar se tipo user já existe
+    */
+
    public function cadastrarTipo()
    {
-
       $this->checkView('successTipo');
       $this->model = model(TiposModel::class);
       $post = $this->request->getPost([\trim('type')]);
       if (!empty($post) && $this->validateData($post, ['type' => 'required|min_length[3]'], ['type' => ['required' => 'O campo é obrigatório!', 'min_length' => 'Digite pelo menos 3 caracteres']])) {
-         $result = $this->model->insert(['type' => $post['type']], true);
-         if ($result) {
-            $sessionID = \session()->get('id');
-            $this->model = model(UsersTypesModel::class);
-            $this->model->insert(['id_user' => $sessionID, 'id_type' => $result]);
+         $sessionID = \session()->get('id');
+         $checkedType = $this->checkType($post['type']);
+         $this->model = model(UsersTypesModel::class);
+
+         if ($checkedType['id']) {
+            $this->model->insert(['id_user' => $sessionID, 'id_type' => $checkedType['id']]);
          }
+
+         if (!$checkedType['id']) {
+            $insert = $this->model->insert(['type' => $post['type']], true);
+            $this->model->insert(['id_user' => $sessionID, 'id_type' => $insert['id']]);
+         }
+
          return redirect()->to('/successTipo');
       };
       return \redirect()->route('tipo')->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
@@ -90,8 +107,6 @@ class ActionsController extends BaseController
    {
       $id = $this->request->getPost(['id']);
       if ($this->request->getMethod() == 'POST' && $this->validateData($id, ['id' => 'required'])) {
-         // $this->model = \model(AcoesModel::class);
-         // $this->model->deletaAcoesPlanta(intval($this->request->getPost('id')));
          $this->model = \model(PlantasModel::class);
          $this->model->deletaPlanta(intval($this->request->getPost('id')));
       };
@@ -103,14 +118,15 @@ class ActionsController extends BaseController
    {
       \helper('form');
       $this->checkView('successAction');
-      $post = $this->request->getPost(['action', 'id_plant', 'start_date', 'deadline', 'title']);
+
+      $post = $this->request->getPost(['action', 'id_plant', 'start_date', 'deadline', 'title', 'id_plant']);
       $validData = $this->validateData($post, ['id_plant' => 'required', 'action' => 'required'], ['action' => ['required' => 'O campo é obrigatório']]);
       if ($this->request->getMethod() == 'POST' && $validData) {
          $this->model = model(AcoesModel::class);
          $this->model->adicionarAcao(intval($post['id_plant']), strval($post['action']), $post['start_date'], $post['deadline'], $post['title'],);
          return redirect()->to("/successAction?id=" . $post['id_plant']);
       }
-      return \redirect()->route('addCuidados')->with('errors', \session()->set('err', $this->validator->getErrors()));
+      return \redirect()->to('adicionarCuidados?id=' . $post['id_plant'])->with('errors', \session()->set('err', $this->validator->getErrors()));
    }
 
    public function cuidadosTipo()
