@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class TiposModel extends Model
 {
    protected $table = 'types';
-   protected $allowedFields = ['type'];
+   protected $allowedFields = ['type', 'created_at', 'updated_at'];
    protected $primaryKey = 'id';
 
    public function getTipos(int $id)
