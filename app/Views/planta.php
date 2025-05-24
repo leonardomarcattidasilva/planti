@@ -15,7 +15,7 @@
                      <li class="card_text"><?= $value['title'] ?></li>
                   <?php  }
                } else { ?>
-                  <p>Não há cuidados cadastrados</p>
+                  <p>Não há cuidados cadastrados!</p>
                <?php } ?>
             </ol>
             <div class="card_footer">
