@@ -15,10 +15,10 @@
                <label for="action" class="form-label">Cuidado:</label>
                <textarea name="action" id="action" class="form-control" cols="30" rows="5"></textarea>
                <small><?= session()->get('err')['action'] ?? '' ?></small>
-               <div class="d-flex flex-row justify-content-between mt-3">
+               <div class="d-flex flex-row justify-content-between mb-3">
                   <div>
                      <label for="start_date" class="form-label">Feito em:</label>
-                     <input type="date" name="start_date" id="" class="form-control mb-3">
+                     <input type="date" name="start_date" id="" class="form-control">
                   </div>
                   <div>
                      <label for="deadline" class="form-label">Refazer em:</label>

@@ -26,7 +26,7 @@ class PlantasModel extends Model
 
    public function getPlantasByTipo(int $type)
    {
-      return $this->select('id')->where('type', $type)->findAll();
+      return $this->select('id')->where('id_type', $type)->findAll();
    }
 
    public function addPlanta(string $name, int $type, int $id)

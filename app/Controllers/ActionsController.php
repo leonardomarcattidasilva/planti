@@ -148,22 +148,26 @@ class ActionsController extends BaseController
    public function cuidadosTipo()
    {
 
-      $post = $this->request->getPost(['tipo', 'action']);
-
-      if ($this->request->getMethod() == 'post' && $this->validateData($post, ['tipo' => 'required', 'action' => 'required'])) {
+      $post = $this->request->getPost(['type', 'action', 'title', 'start_date', 'deadline']);
+      $valid_data = $this->validateData($post, ['type' => 'required', 'action' => 'required', 'title' => 'required', 'start_date' => 'required', 'deadline' => 'required']);
+      if ($this->request->getMethod() == 'POST' && $valid_data) {
          $this->model = model(PlantasModel::class);
-         $tipo = strval($this->request->getPost('tipo'));
-         $list = $this->model->getPlantasByTipo($tipo);
-
+         $type = strval($this->request->getPost('type'));
+         $plants_list = $this->model->getPlantasByTipo($type);
          $action = strval($this->request->getPost('action'));
+         $title = strval($this->request->getPost('title'));
+         $start_date = strval($this->request->getPost('start_date'));
+         $deadline = strval($this->request->getPost('deadline'));
          $this->model = model(AcoesModel::class);
 
-         foreach ($list as $key => $value) {
-            $this->model->addCuidadoTipo($value['id'], $action);
+         foreach ($plants_list as $key => $value) {
+            $this->model->addCuidadoTipo($value['id'], $title, $action, $start_date, $deadline);
          };
 
          return redirect()->route('successTipo');
       };
+
+      return \redirect()->back();
    }
 
    public function updateCuidado()

@@ -190,8 +190,7 @@ class PagesController extends BaseController
       $this->data['tab'] = 'Planti - Tipos';
       $this->data['title'] = 'Adicionar cuidados as plantas por tipo';
       $this->model = model(TiposModel::class);
-      $this->data['tipos'] = $this->model->getTipos(session()->get('id'));
-
+      $this->data['types'] = $this->model->getTipos(session()->get('id'));
       $this->checkView('cuidadosTipos');
 
       return view('Views/templates/header.php', $this->data) . view('Views/cuidadosTipos') . view('Views/templates/footer.php');

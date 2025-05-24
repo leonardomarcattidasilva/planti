@@ -52,9 +52,9 @@ class AcoesModel extends Model
       $this->insert(['action' => $action, 'id_plant' => $id, 'start_date' => $start_date, 'deadline' => $deadline, 'title' => $title]);
    }
 
-   public function addCuidadoTipo(int $id, string $action)
+   public function addCuidadoTipo(int $id, string $title, string $action, string $start_date, string $deadline)
    {
-      $this->insert(['action' => $action, 'id_plant' => $id]);
+      $this->insert(['action' => $action, 'title' => $title, 'id_plant' => $id, 'start_date' => $start_date, 'deadline' => $deadline, 'created_at' => Time::now()]);
    }
 
    public function getCuidado(int $id)

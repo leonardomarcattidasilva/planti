@@ -22,12 +22,6 @@ class UsersSeeder extends Seeder
             'password' => \base64_encode('123456'),
             'created_at' => Time::now()
          ],
-         [
-            'name' => \base64_encode('User C'),
-            'email' => \base64_encode('userc@test.com'),
-            'password' => \base64_encode('123456'),
-            'created_at' => Time::now()
-         ],
       ];
 
       $this->db->table('users')->insertBatch($users);

@@ -27,7 +27,7 @@
                </div>
             </div>
             <div class="mb-3">
-               <button type="submit" class="btn btn-success">Editar</button>
+               <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Editar</button>
             </div>
          </form>
       </div>

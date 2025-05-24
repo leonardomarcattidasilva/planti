@@ -16,10 +16,10 @@
                <?php }
                ?>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 ">
                <label for="tipo" class="form-label">Tipo:</label>
                <div class="d-flex flex-row align-items-center">
-                  <select name="type" id="tipe" class="form-control" required>
+                  <select name="type" id="type" class="form-control" required>
                      <option value="0" selected disabled>Selecione tipo</option>
                      <?php
                      if (isset($tipos) && count($tipos) > 0) {

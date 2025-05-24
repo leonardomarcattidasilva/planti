@@ -23,12 +23,12 @@ use CodeIgniter\I18n\Time;
                   </div>
                   <hr>
                   <div>
-                     <a href="editarCuidado?id=<?= $value['id'] ?>&id_plant=<?= $id_plant ?>" id="btn_detalhes" class="btn btn-success">Editar</a>
+                     <a href="editarCuidado?id=<?= $value['id'] ?>&id_plant=<?= $id_plant ?>" id="btn_detalhes" class="btn btn-success"><i class="fa-solid fa-pencil"></i> Editar</a>
                      <?php
                      if ($value['deadline'] <= Time::today()->toDateString() && !$value['done']) { ?>
-                        <button type="button" class="btn btn-warning"><a href="<?= site_url('done?id=' . $value['id']) ?>">Feito</a></button>
+                        <button type="button" class="btn btn-warning"><a href="<?= site_url('done?id=' . $value['id']) ?>"><i class="fa-solid fa-check"></i> Feito</a></button>
                      <?php } ?>
-                     <button type="button" class="btn btn-danger btnDelCuidado" data-bs-toggle="modal" data-bs-target="#delCuidadoModal" value="<?= $value['id'] ?>">Deletar</button>
+                     <button type="button" class="btn btn-danger btnDelCuidado" data-bs-toggle="modal" data-bs-target="#delCuidadoModal" value="<?= $value['id'] ?>"><i class="fa-solid fa-trash-can"></i> Deletar</button>
                   </div>
                </div>
          <?php };
@@ -49,7 +49,7 @@ use CodeIgniter\I18n\Time;
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
-                  <a href="deletarCuidado?id_plant=<?= $id_plant ?>&id=" class="btn btn-danger" id="delLink">Deletar</a>
+                  <a href="deletarCuidado?id_plant=<?= $id_plant ?>&id=" class="btn btn-danger" id="delLink"><i class="fa-solid fa-trash-can"></i> Deletar</a>
                </div>
             </div>
          </div>
