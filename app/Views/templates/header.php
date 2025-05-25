@@ -28,7 +28,7 @@ $pager = \Config\Services::pager();
          </a>
       </div>
       <div id="headerRight">
-         <p>Bem vindo <?= session()->get('nome') ?></p>
+         <p>Bem vindo <?= session()->get('name'); ?></p>
          <div class="dropdown">
             <a class="btn btn-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                Planti

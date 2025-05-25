@@ -5,6 +5,9 @@
       <div id="flashbad">
          <p><?= session()->getFlashdata('bad_email') ?? '' ?></p>
       </div>
+      <div id="flashGood">
+         <p><?= session()->getFlashdata('success') ?? '' ?></p>
+      </div>
       <form action="loginAction" method="post" id="form_login">
          <?= csrf_field() ?>
          <div class="mb-3">

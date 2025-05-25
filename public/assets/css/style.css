@@ -105,8 +105,6 @@ header h1 {
    margin: 0 auto;
 }
 
-
-
 #detalhes>section h1,
 #detalhes>section h2 {
    padding: 0;
@@ -327,4 +325,15 @@ button {
 #flashbad>p {
    background-color: lightcoral !important;
    color: darkred;
+}
+
+#flashGood {
+   width: 100%;
+   text-align: center;
+   margin-top: 10px;
+}
+
+#flashGood>p {
+   background-color: lightgreen !important;
+   color: darkgreen;
 }

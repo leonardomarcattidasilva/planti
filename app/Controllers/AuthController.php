@@ -45,7 +45,7 @@ class AuthController extends BaseController
          $result = $this->model->addUser($this->encriptData($post['name']), $this->encriptData($post['email']), $this->encriptData($post['password']));
 
          if ($result) {
-            return redirect()->to("login");
+            return redirect()->to("login")->withInput()->with('success', 'Usuário cadastrado com sucesso');
          }
 
          return \redirect()->route('logup')->withInput()->with('bad_email', 'Email em uso');
@@ -76,15 +76,12 @@ class AuthController extends BaseController
          $this->model = new UsersModel();
          $foundUser = $this->model->getUser($this->encriptData($post['email']), $this->encriptData($post['password']));
          if ($foundUser) {
-            \session()->set(['id' => $foundUser->id, 'nome' => \base64_decode($foundUser->name)]);
+            \session()->set(['id' => $foundUser->id, 'name' => \base64_decode($foundUser->name)]);
             return \redirect()->route('home');
          }
 
          return \redirect()->route('login')->withInput()->with('bad_email', 'Usuário e/ou senha não cadastrados');
       }
-
-      dd('erro');
-
       return \redirect()->route('login')->withInput()->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
    }
 
