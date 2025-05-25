@@ -91,9 +91,6 @@ h2 {
    padding: 0;
 }
 
-header h1 {
-   color: white;
-}
 
 #detalhes>section {
    margin-top: 20px;
@@ -172,6 +169,23 @@ footer a {
    padding: 0px;
    margin: 0px;
    text-decoration: none;
+   color: white;
+}
+
+#headerRight .dropdown-menu .dropdown-item:hover {
+   color: darkgreen;
+   background-color: lightgreen;
+}
+
+#headerRight .logout:hover {
+   color: darkred !important;
+   background-color: lightcoral !important;
+}
+
+
+#headerRight .editUser:hover {
+   color: darkblue !important;
+   background-color: lightblue !important;
 }
 
 #fundo {
