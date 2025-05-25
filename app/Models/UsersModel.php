@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use CodeIgniter\I18n\Time;
 use CodeIgniter\Model;
 
 class UsersModel extends Model
@@ -31,7 +32,7 @@ class UsersModel extends Model
    {
       $checkedEmail = $this->checkEmail($email);
       if ($checkedEmail) {
-         $this->insert(['nome' => $name, 'password' => $password, 'email' => $email]);
+         $this->insert(['name' => $name, 'password' => $password, 'email' => $email, 'created_at' => Time::now()]);
          return true;
       }
 
