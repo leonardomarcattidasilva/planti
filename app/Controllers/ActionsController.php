@@ -65,24 +65,20 @@ class ActionsController extends BaseController
       return $type;
    }
 
-   private function checkUserType(int $id_user, int $id_type): bool
-   {
-      $this->model = model(UsersTypesModel::class);
-      $checked = $this->model->where(['id_user' => $id_user, 'id_type' => $id_type])->get()->getRowArray();
-      return $checked ? true : false;
-   }
-
-   private function checkAvailability($checkedType, $userTypeCheck): bool
-   {
-      return ($checkedType && !$userTypeCheck) ? true : false;
-   }
-
    public function cadastrarTipo()
    {
       $this->checkView('successTipo');
       $this->model = model(TiposModel::class);
       $post = $this->request->getPost([\trim('type')]);
-      $validData = $this->validateData($post, ['type' => 'required|min_length[3]'], ['type' => ['required' => 'O campo é obrigatório!', 'min_length' => 'Digite pelo menos 3 caracteres']]);
+
+      $rules = [
+         'type' => [
+            'rules' => 'required|min_length[3]',
+            'errors' => ['required' => 'O campo é obrigatório!', 'min_length' => 'Digite pelo menos 3 caracteres']
+         ]
+      ];
+
+      $validData = $this->validateData($post, $rules);
 
       if (!empty($post) && $validData) {
          $sessionID = \session()->get('id');
@@ -90,19 +86,15 @@ class ActionsController extends BaseController
 
          if (!$checkedType) {
             $insert = $this->model->insert(['type' => $post['type'], 'created_at' => Time::now()], true);
+            $this->model = model(UsersTypesModel::class);
             $this->model->insert(['id_user' => $sessionID, 'id_type' => $insert]);
-            return redirect()->to('/successTipo');
          }
 
-         $this->model = model(UsersTypesModel::class);
-         $userTypeCheck = $this->checkUserType($sessionID, $checkedType['id']);
-         $availability = $this->checkAvailability($checkedType, $userTypeCheck);
-
-         if ($availability) {
+         if ($checkedType) {
+            $this->model = model(UsersTypesModel::class);
             $this->model->insert(['id_user' => $sessionID, 'id_type' => $checkedType['id']]);
-            return redirect()->to('/successTipo');
          }
-         return \redirect()->route('tipo')->with('errors', \session()->setTempdata('err', ['type' => "Tipo já cadastrado. Escolha outro."], 10));
+         return redirect()->to('/successTipo');
       };
 
       return \redirect()->route('tipo')->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));

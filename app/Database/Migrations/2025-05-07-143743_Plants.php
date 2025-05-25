@@ -18,6 +18,7 @@ class Plants extends Migration
       ]);
 
       $this->forge->addKey('id', true);
+      $this->forge->addUniqueKey('name');
       $this->forge->addForeignKey('id_user', 'users', 'id', 'CASCADE', 'CASCADE');
       $this->forge->addForeignKey('id_type', 'types', 'id', 'CASCADE', 'CASCADE');
       $this->forge->createTable('plants');
