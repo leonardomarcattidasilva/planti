@@ -1,3 +1,7 @@
+<?= $this->extend('layout/layout') ?>
+
+<?= $this->section('content') ?>
+<?= $this->include('templates/header') ?>
 <main>
    <section>
       <h2>Consulte sua Planta</h2>
@@ -42,3 +46,6 @@ if (count($alerts) > 0) { ?>
       </ol>
    </div>
 <?php } ?>
+
+<?= $this->include('templates/footer') ?>
+<?= $this->endSection('content') ?>

@@ -1,3 +1,7 @@
+<?= $this->extend('layout/layout') ?>
+
+<?= $this->section('content') ?>
+<?= $this->include('templates/header') ?>
 <main id="success">
    <section>
       <h2><?= $title ?></h2>
@@ -8,3 +12,6 @@
       </div>
    </section>
 </main>
+
+<?= $this->include('templates/footer') ?>
+<?= $this->endSection('content') ?>

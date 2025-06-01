@@ -1,3 +1,7 @@
+<?= $this->extend('layout/layout') ?>
+
+<?= $this->section('content') ?>
+<?= $this->include('templates/header') ?>
 <main id="login">
    <section class="col-4 offset-4">
       <?= session()->getFlashdata('error') ?>
@@ -28,3 +32,5 @@
       </form>
    </section>
 </main>
+<?= $this->include('templates/footer') ?>
+<?= $this->endSection() ?>

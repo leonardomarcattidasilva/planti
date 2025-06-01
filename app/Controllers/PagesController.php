@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Models\PlantasModel;
 use App\Models\AcoesModel;
 use App\Models\TiposModel;
-use CodeIgniter\I18n\Time;
 
 class PagesController extends BaseController
 {
@@ -21,11 +20,10 @@ class PagesController extends BaseController
 
    public function login()
    {
-
       $this->checkView('login');
       helper('form');
       $this->data['tab'] = 'Login';
-      return view('Views/templates/headerLogin.php', $this->data) . view('Views/login', $this->data) . view('Views/templates/footer.php');
+      return view('Views/login', $this->data);
    }
 
    public function logup()
@@ -34,12 +32,11 @@ class PagesController extends BaseController
 
       helper('form');
       $this->data['tab'] = 'Logup';
-      return view('Views/templates/headerLogin.php', $this->data) . view('Views/logup', $this->data) . view('Views/templates/footer.php');
+      return view('Views/logup', $this->data);
    }
 
    public function home()
    {
-
       $this->checkView('home');
 
       if (\session()->has('id')) {
@@ -49,7 +46,7 @@ class PagesController extends BaseController
          $this->model = model(PlantasModel::class);
          $this->data['plantas'] = $this->model->getUserPlantas(session()->get('id'));
 
-         return view('Views/templates/header.php', $this->data) . view('Views/home') . view('Views/templates/footer.php');
+         return view('Views/home', $this->data);
       }
 
       return \redirect()->route('login');
@@ -65,7 +62,7 @@ class PagesController extends BaseController
       $this->model = model(TiposModel::class);
       $this->data['tipos'] = $this->model->getTipos(session()->get('id'));
 
-      return view('Views/templates/header.php', $this->data) . view('Views/cadastroPlanta') . view('Views/templates/footer.php');
+      return view('Views/cadastroPlanta', $this->data);
    }
 
    public function cadastroTipos()
@@ -76,13 +73,14 @@ class PagesController extends BaseController
       $this->data['tab'] = 'Planti - Cadastro';
       $this->data['title'] = 'Cadastro de Tipos';
 
-      return view('Views/templates/header.php', $this->data) . view('Views/cadastroTipos') . view('Views/templates/footer.php');
+      return view('Views/cadastroTipos', $this->data);
    }
 
    public function verPlanta()
    {
       $id = \filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
       $r = \filter_input(\INPUT_GET, 'r', \FILTER_SANITIZE_NUMBER_INT);
+
       if ($id != 0) {
          $this->data['tab'] = 'Planti - Planta';
          $this->model = \model(PlantasModel::class);
@@ -96,7 +94,7 @@ class PagesController extends BaseController
 
          $this->checkView('planta');
 
-         return view('Views/templates/header', $this->data) . view('Views/planta') . view('Views/templates/footer');
+         return view('Views/planta', $this->data);
       } else {
          return redirect()->route('home');
       };
@@ -129,7 +127,7 @@ class PagesController extends BaseController
 
       $this->checkView('detalhes');
 
-      return view('Views/templates/header', $this->data) . view('Views/detalhes') . view('Views/templates/footer');
+      return view('Views/detalhes', $this->data);
    }
 
    public function deletar()
@@ -141,7 +139,7 @@ class PagesController extends BaseController
 
       $this->checkView('deletar');
 
-      return view('Views/templates/header', $this->data) . view('Views/deletar') . view('Views/templates/footer');
+      return view('Views/deletar', $this->data);
    }
 
    public function getPlanta()
@@ -159,7 +157,7 @@ class PagesController extends BaseController
 
       $this->checkView('editarPlanta');
 
-      return view('Views/templates/header', $this->data) . view('Views/editarPlanta') . view('Views/templates/footer');
+      return view('Views/editarPlanta', $this->data);
    }
 
    public function adicionarCuidados()
@@ -172,7 +170,7 @@ class PagesController extends BaseController
       $this->data['tab'] = 'Planti - Cuidados';
       $this->data['id'] = $id;
 
-      return view('Views/templates/header', $this->data) . view('Views/adicionaCuidado') . view('Views/templates/footer');
+      return view('Views/adicionaCuidado', $this->data);
    }
 
    public function cuidadosTodas()
@@ -182,7 +180,7 @@ class PagesController extends BaseController
 
       $this->checkView('cuidados');
 
-      return view('Views/templates/header.php', $this->data) . view('Views/cuidados') . view('Views/templates/footer.php');
+      return view('Views/cuidados', $this->data);
    }
 
    public function cuidadosTipos()
@@ -193,7 +191,7 @@ class PagesController extends BaseController
       $this->data['types'] = $this->model->getTipos(session()->get('id'));
       $this->checkView('cuidadosTipos');
 
-      return view('Views/templates/header.php', $this->data) . view('Views/cuidadosTipos') . view('Views/templates/footer.php');
+      return view('Views/cuidadosTipos', $this->data);
    }
 
    public function success()
@@ -203,7 +201,7 @@ class PagesController extends BaseController
 
       $this->checkView('success');
 
-      return view('Views/templates/header.php', $this->data) . view('Views/success') . view('Views/templates/footer.php');
+      return view('Views/success', $this->data);
    }
 
    public function successTipo()
@@ -213,7 +211,7 @@ class PagesController extends BaseController
 
       $this->checkView('successTipo');
 
-      return view('Views/templates/header.php', $this->data) . view('Views/successTipo') . view('Views/templates/footer.php');
+      return view('Views/successTipo', $this->data);
    }
 
    public function successAction()
@@ -223,6 +221,6 @@ class PagesController extends BaseController
 
       $this->checkView('successAction');
 
-      return view('Views/templates/header.php', $this->data) . view('Views/successAction') . view('Views/templates/footer.php');
+      return view('Views/successAction', $this->data);
    }
 }

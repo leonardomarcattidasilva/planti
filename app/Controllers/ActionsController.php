@@ -183,7 +183,7 @@ class ActionsController extends BaseController
 
       $this->checkView('editCuidado');
 
-      return view('Views/templates/header', $this->data) . view('Views/editCuidado') . view('Views/templates/footer');
+      return view('Views/editCuidado', $this->data);
    }
 
    public function cuidadosTodas()

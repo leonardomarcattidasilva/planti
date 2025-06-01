@@ -1,3 +1,7 @@
+<?= $this->extend('layout/layout') ?>
+
+<?= $this->section('content') ?>
+<?= $this->include('templates/header') ?>
 <main>
    <section>
       <h2>Sua plantinha</h2>
@@ -32,3 +36,6 @@
       <?php }; ?>
    </section>
 </main>
+
+<?= $this->include('templates/footer') ?>
+<?= $this->endSection('content') ?>
