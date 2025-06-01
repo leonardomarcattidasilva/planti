@@ -102,7 +102,6 @@ h2 {
    flex-flow: column nowrap;
    justify-content: center;
    align-items: center;
-   width: 80%;
    margin: 0 auto;
 }
 
@@ -115,7 +114,7 @@ h2 {
 #lista_detalhes {
    display: flex;
    flex-flow: row wrap;
-   justify-content: space-between;
+   justify-content: center;
    align-items: flex-end;
 }
 

@@ -39,7 +39,7 @@ class ActionsController extends BaseController
       $idplanta = \filter_input(\INPUT_GET, 'id_plant', \FILTER_SANITIZE_NUMBER_INT);
       $this->model = \model(AcoesModel::class);
       $this->model->deleteCuidado($id);
-      return redirect()->to('/planta?id=' . $idplanta);
+      return redirect()->to('/detalhes?id=' . $idplanta);
    }
 
    public function cadastrar()
@@ -52,7 +52,12 @@ class ActionsController extends BaseController
       $post = $this->request->getPost(['name', 'type']);
       if (!empty($post) && $this->validateData($post, ['name' => 'required', 'type' => 'required'], ['name' => ['required' => 'O campo é obrigatório'], 'type' => ['required' => 'O campo é obrigatório']])) {
          $this->model->addPlanta($post['name'], $post['type'], \session()->get('id'));
-         return redirect()->to('/success');
+
+         $this->data['message'] = 'Planta cadastrada com sucesso';
+         $this->data['url'] = 'cadastroPlanta';
+         $this->data['novo'] = 'Novo Cadastro';
+         $this->data['tab'] = 'Sucesso';
+         return view('success', $this->data);
       };
 
       return \redirect()->route('cadastroPlanta')->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
@@ -94,7 +99,12 @@ class ActionsController extends BaseController
             $this->model = model(UsersTypesModel::class);
             $this->model->insert(['id_user' => $sessionID, 'id_type' => $checkedType['id']]);
          }
-         return redirect()->to('/successTipo');
+         $this->data['message'] = 'Cadastrado com sucesso';
+         $this->data['url'] = 'tipos';
+         $this->data['novo'] = 'Novo Cadastro';
+         $this->data['tab'] = 'Sucesso';
+
+         return view('success', $this->data);
       };
 
       return \redirect()->route('tipo')->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
@@ -129,10 +139,17 @@ class ActionsController extends BaseController
 
       $post = $this->request->getPost(['action', 'id_plant', 'start_date', 'deadline', 'title', 'id_plant']);
       $validData = $this->validateData($post, ['id_plant' => 'required', 'action' => 'required'], ['action' => ['required' => 'O campo é obrigatório']]);
+
       if ($this->request->getMethod() == 'POST' && $validData) {
          $this->model = model(AcoesModel::class);
-         $this->model->adicionarAcao(intval($post['id_plant']), strval($post['action']), $post['start_date'], $post['deadline'], $post['title'],);
-         return redirect()->to("/successAction?id=" . $post['id_plant']);
+         $this->model->adicionarAcao(intval($post['id_plant']), strval($post['action']), $post['start_date'], $post['deadline'], $post['title']);
+
+         $this->data['message'] = 'Cuidado cadastrado com sucesso';
+         $this->data['url'] = 'adicionarCuidado?id' . $post['id_plant'];
+         $this->data['novo'] = 'Novo Cuidado';
+         $this->data['tab'] = 'Sucesso';
+
+         return redirect()->route('success', $this->data);
       }
       return \redirect()->to('adicionarCuidados?id=' . $post['id_plant'])->with('errors', \session()->set('err', $this->validator->getErrors()));
    }
@@ -156,7 +173,11 @@ class ActionsController extends BaseController
             $this->model->addCuidadoTipo($value['id'], $title, $action, $start_date, $deadline);
          };
 
-         return redirect()->route('successTipo');
+         $this->data['message'] = 'Cuidado cadastrado com sucesso';
+         $this->data['url'] = 'cuidadosTipos';
+         $this->data['novo'] = 'Novo Cuidado';
+         $this->data['title'] = 'Sucesso!';
+         return view('success');
       };
 
       return \redirect()->back();

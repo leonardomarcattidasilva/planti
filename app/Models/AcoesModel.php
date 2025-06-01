@@ -33,13 +33,13 @@ class AcoesModel extends Model
 
    public function getCuidados(int $id)
    {
-      return $this->Where('id_plant', $id)->limit(3)->orderBy('deadline', 'asc')->get()->getResultArray();
+      return $this->Where('id_plant', $id)->limit(5)->orderBy('start_date', 'desc')->get()->getResultArray();
    }
 
    public function getDetalhes(string $id, string $page)
    {
       $p = ($page == 0) ? 0 : ($page - 1) * 4;
-      return $this->Where('id_plant', $id)->orderBy('deadline', 'asc')->limit(4, $p)->get()->getResultArray();
+      return $this->Where('id_plant', $id)->orderBy('start_date', 'desc')->limit(4, $p)->get()->getResultArray();
    }
 
    public function deletaAcoesPlanta(int $id_plant)
@@ -59,7 +59,7 @@ class AcoesModel extends Model
 
    public function getCuidado(int $id)
    {
-      return $this->where('id', $id)->get()->getRowArray();
+      return $this->where('id', $id)->orderBy('start_date', 'desc')->get()->getRowArray();
    }
 
    public function updateCuidado(int $id, string $action, string $start_date, string $deadline, string $title)
