@@ -25,31 +25,32 @@
 <b>CI_ENVIRONMENT = production</b>
 
 <h3>3.1 No arquivo app/Config/Database faça:</h3>
-   public array $default = [
-      'DSN'          => '',
-      'hostname'     => 'ip_server',
-      'username'     => 'user',
-      'password'     => 'password',
-      'database'     => 'planti',
-      'DBDriver'     => 'MySQLi',
-      'DBPrefix'     => '',
-      'pConnect'     => false,
-      'DBDebug'      => true,
-      'charset'      => 'utf8mb4',
-      'DBCollat'     => 'utf8mb4_general_ci',
-      'swapPre'      => '',
-      'encrypt'      => false,
-      'compress'     => false,
-      'strictOn'     => false,
-      'failover'     => [],
-      'port'         => 3306,
-      'numberNative' => false,
-      'foundRows'    => false,
-      'dateFormat'   => [
-         'date'     => 'Y-m-d',
-         'datetime' => 'Y-m-d H:i:s',
-         'time'     => 'H:i:s',
-      ],
+
+   public array $default = [ \n
+      'DSN'          => '', \n
+      'hostname'     => 'ip_server',\n
+      'username'     => 'user',\n
+      'password'     => 'password',\n
+      'database'     => 'planti',\n
+      'DBDriver'     => 'MySQLi',\n
+      'DBPrefix'     => '',\n
+      'pConnect'     => false,\n
+      'DBDebug'      => true,\n
+      'charset'      => 'utf8mb4',\n
+      'DBCollat'     => 'utf8mb4_general_ci',\n
+      'swapPre'      => '',\n
+      'encrypt'      => false,\n
+      'compress'     => false,\n
+      'strictOn'     => false,\n
+      'failover'     => [],\n
+      'port'         => 3306,\n
+      'numberNative' => false,\n
+      'foundRows'    => false,\n
+      'dateFormat'   => [\n
+         'date'     => 'Y-m-d',\n
+         'datetime' => 'Y-m-d H:i:s',\n
+         'time'     => 'H:i:s',\n
+      ],\n
    ];
 
 <h3>4. Crie o banco de dados MySQL</h3>
