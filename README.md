@@ -36,7 +36,7 @@
 <p>CREATE DATABASE planti</p>
 
 <h3>4.1 - Populando o banco</h3>
-   <p>Existem duas formas de popular o banco. Rodar as migrations ou utilizar um arquivo SQL.A primeira forma é rodar as migrations. Para isso faça: php spark migrate. A outra forma é utilizando o arquivo databank.sql </p>
+   <p>Existem duas formas de popular o banco. Rodar as migrations ou utilizar um arquivo SQL. A primeira forma é rodar as migrations. Para isso faça: php spark migrate. A outra forma é utilizando o arquivo databank.sql </p>
    
 <h3>5. Inicie o servidor local</h3>
 <p>php spark serve --host ip_server --port port_number</p>
@@ -45,28 +45,29 @@
 <h4>📚 Rotas da Aplicação</h4>
 <h5>🔐 Autenticação</h5>
 Método	Rota	Descrição
-GET	/login	Página de login
-POST	/loginAction	Processa o login
-GET	/logup	Página de cadastro
-POST	/logupAction	Processa o cadastro
-GET	/logout	Logout
+<p>GET	/login	Página de login</p>
+<p>POST	/loginAction	Processa o login</p>
+<p>GET	/logup	Página de cadastro</p>
+<p>POST	/logupAction	Processa o cadastro</p>
+<p>GET	/logout	Logout</p>
+
 
 <h4>🌱 Plantas</h4>
 <h5>Método Rota Descrição</h5>
-GET	/	Página inicial
-GET	/cadastroPlanta	Formulário de cadastro de planta
-POST	/cadastrar	Cadastra uma planta
-GET	/planta	Lista de plantas
-GET	/detalhes	Visualiza detalhes de uma planta
-GET	/editar	Formulário de edição
-POST	/updatePlanta	Atualiza dados da planta
-GET	/deletar	Confirmação de exclusão
-POST	/confirmadeletar	Deleta a planta
+<p>GET	/	Página inicial</p>
+<p>GET	/cadastroPlanta	Formulário de cadastro de planta</p>
+<p>POST	/cadastrar	Cadastra uma planta</p>
+<p>GET	/planta	Lista de plantas</p>
+<p>GET	/detalhes	Visualiza detalhes de uma planta</p>
+<p>GET	/editar	Formulário de edição</p>
+<p>POST	/updatePlanta	Atualiza dados da planta</p>
+<p>GET	/deletar	Confirmação de exclusão</p>
+<p>POST	/confirmadeletar	Deleta a planta</p>
 
 <h4>🪴 Tipos de Planta</h4>
 <h5>Método Rota Descrição</h5>
-GET	/tipos	Cadastro de tipos de planta
-POST	/cadastrarTipo	Cadastra novo tipo
+<p>GET	/tipos	Cadastro de tipos de planta</p>
+<p>POST	/cadastrarTipo	Cadastra novo tipo</p>
 
 <h4>💧 Cuidados</h4>
 <h5>Método Rota Descrição</h5>
@@ -82,8 +83,8 @@ POST	/cuidadosTipo	API para cuidados por tipo
 
 <h4>✅ Outros</h4>
 <h5>Método Rota Descrição</h5>
-GET	/done	Tela de confirmação
-GET	/success	Mensagem de sucesso
+<p>GET	/done	Tela de confirmação</p>
+<p>GET	/success	Mensagem de sucesso</p>
 
 <h3>🧪 Testes</h3>
 <p>Se houver testes implementados:</p>
