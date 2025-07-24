@@ -25,33 +25,11 @@
 <b>CI_ENVIRONMENT = production</b>
 
 <h3>3.1 No arquivo app/Config/Database faça:</h3>
-
-   public array $default = [ \n
-      'DSN'          => '', \n
-      'hostname'     => 'ip_server',\n
-      'username'     => 'user',\n
-      'password'     => 'password',\n
-      'database'     => 'planti',\n
-      'DBDriver'     => 'MySQLi',\n
-      'DBPrefix'     => '',\n
-      'pConnect'     => false,\n
-      'DBDebug'      => true,\n
-      'charset'      => 'utf8mb4',\n
-      'DBCollat'     => 'utf8mb4_general_ci',\n
-      'swapPre'      => '',\n
-      'encrypt'      => false,\n
-      'compress'     => false,\n
-      'strictOn'     => false,\n
-      'failover'     => [],\n
-      'port'         => 3306,\n
-      'numberNative' => false,\n
-      'foundRows'    => false,\n
-      'dateFormat'   => [\n
-         'date'     => 'Y-m-d',\n
-         'datetime' => 'Y-m-d H:i:s',\n
-         'time'     => 'H:i:s',\n
-      ],\n
-   ];
+   <p>'hostname' => 'ip_server'</p>
+   <p>'username' => 'user'</p>
+   <p>'password' => 'password'</p>
+   <p>'database' => 'planti'</p>
+   <p>'DBDriver' => 'MySQLi'</p>
 
 <h3>4. Crie o banco de dados MySQL</h3>
 <p>Acesse o MySQL e execute:</p>
