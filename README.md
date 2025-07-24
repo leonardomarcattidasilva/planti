@@ -71,15 +71,15 @@ Método	Rota	Descrição
 
 <h4>💧 Cuidados</h4>
 <h5>Método Rota Descrição</h5>
-GET	/adicionarCuidados	Formulário de adicionar cuidado
-POST	/cadastrarCuidado	Cadastra novo cuidado
-GET	/editarCuidado	Página de edição de cuidado
-POST	/updateCuidado	Atualiza dados do cuidado
-GET	/deletarCuidado	Página de confirmação de exclusão
-GET	/cuidadosTodas	Lista visual de todos os cuidados
-POST	/cuidados	API para todos os cuidados
-GET	/cuidadosTipos	Lista visual filtrada por tipo
-POST	/cuidadosTipo	API para cuidados por tipo
+<p>GET	/adicionarCuidados	Formulário de adicionar cuidado</p>
+<p>POST	/cadastrarCuidado	Cadastra novo cuidado</p>
+<p>GET	/editarCuidado	Página de edição de cuidado</p>
+<p>POST	/updateCuidado	Atualiza dados do cuidado</p>
+<p>GET	/deletarCuidado	Página de confirmação de exclusão</p>
+<p>GET	/cuidadosTodas	Lista visual de todos os cuidados</p>
+<p>POST	/cuidados	API para todos os cuidados</p>
+<p>GET	/cuidadosTipos	Lista visual filtrada por tipo</p>
+<p>POST	/cuidadosTipo	API para cuidados por tipo</p>
 
 <h4>✅ Outros</h4>
 <h5>Método Rota Descrição</h5>
