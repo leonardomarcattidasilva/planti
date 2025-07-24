@@ -135,7 +135,7 @@ class ActionsController extends BaseController
    public function cadastrarCuidado()
    {
       \helper('form');
-      $this->checkView('successAction');
+      $this->checkView('success');
 
       $post = $this->request->getPost(['action', 'id_plant', 'start_date', 'deadline', 'title', 'id_plant']);
       $validData = $this->validateData($post, ['id_plant' => 'required', 'action' => 'required'], ['action' => ['required' => 'O campo é obrigatório']]);
@@ -149,7 +149,7 @@ class ActionsController extends BaseController
          $this->data['novo'] = 'Novo Cuidado';
          $this->data['tab'] = 'Sucesso';
 
-         return redirect()->route('success', $this->data);
+         return view('success', $this->data);
       }
       return \redirect()->to('adicionarCuidados?id=' . $post['id_plant'])->with('errors', \session()->set('err', $this->validator->getErrors()));
    }

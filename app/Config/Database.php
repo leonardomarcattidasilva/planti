@@ -29,7 +29,7 @@ class Database extends Config
       'hostname'     => '127.0.0.1',
       'username'     => 'leo',
       'password'     => 'Aa119539$',
-      'database'     => 'planti',
+      'database'     => 'p2',
       'DBDriver'     => 'MySQLi',
       'DBPrefix'     => '',
       'pConnect'     => false,

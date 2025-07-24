@@ -31,8 +31,6 @@ $routes->get('deletarCuidado', 'ActionsController::deletarCuidado');
 $routes->get('cuidadosTodas', 'PagesController::cuidadosTodas');
 $routes->get('cuidadosTipos', 'PagesController::cuidadosTipos');
 $routes->get('success', 'PagesController::success', ['as' => 'success']);
-// $routes->get('successTipo', 'PagesController::successTipo', ['as' => 'successTipo']);
-// $routes->get('successAction', 'PagesController::successAction');
 $routes->get('/login', 'PagesController::login', ['as' => 'login']);
 $routes->get('/logup', 'PagesController::logup', ['as' => 'logup']);
 $routes->get('/logout', 'AuthController::logout', ['as' => 'logout']);
