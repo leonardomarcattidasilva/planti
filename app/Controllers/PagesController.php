@@ -24,6 +24,8 @@ class PagesController extends BaseController
       helper('form');
       $this->data['tab'] = 'Login';
       return view('Views/login', $this->data);
+
+      echo 'ok';
    }
 
    public function logup()
@@ -50,6 +52,7 @@ class PagesController extends BaseController
       }
 
       return \redirect()->route('login');
+      echo 'aaaaa';
    }
 
    public function cadastroPlanta()

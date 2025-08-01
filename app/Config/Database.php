@@ -27,9 +27,9 @@ class Database extends Config
    public array $default = [
       'DSN'          => '',
       'hostname'     => '127.0.0.1',
-      'username'     => 'leo',
-      'password'     => 'Aa119539$',
-      'database'     => 'p2',
+      'username'     => 'admin',
+      'password'     => '9x*UwARA5@',
+      'database'     => 'planti',
       'DBDriver'     => 'MySQLi',
       'DBPrefix'     => '',
       'pConnect'     => false,

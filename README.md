@@ -16,31 +16,17 @@
 <p>git clone https://github.com/leonardomarcattidasilva/planti.git</p>
 <p>cd planti</p>
 
-<h3>2. Instale as dependências via Composer</h3>
-<p>composer install</p>
+<h3>2. Build e execução do container</h3>
+<p>docker build -t planti .</p>
+<p>docker container run -d --name planti -h planti -p 8080:8080 -p 3305:3306 -v $(pwd):/app planti</p>
 
 <h3>3. Copie o arquivo de ambiente</h3>
 <p><Renomeie o arquivo .env_example para .env com os dados de conexão com seu MySQL./p>
 <p>Remova o comentário da linha de ambiente e o renomeie como production</p>
 <b>CI_ENVIRONMENT = production</b>
 
-<h3>3.1 No arquivo app/Config/Database faça:</h3>
-   <p>'hostname' => 'ip_server'</p>
-   <p>'username' => 'user'</p>
-   <p>'password' => 'password'</p>
-   <p>'database' => 'planti'</p>
-   <p>'DBDriver' => 'MySQLi'</p>
 
-<h3>4. Crie o banco de dados MySQL</h3>
-<p>Acesse o MySQL e execute:</p>
-<p>CREATE DATABASE planti</p>
-
-<h3>4.1 - Populando o banco</h3>
-   <p>Existem duas formas de popular o banco. Rodar as migrations ou utilizar um arquivo SQL. A primeira forma é rodar as migrations. Para isso faça: php spark migrate. A outra forma é utilizando o arquivo databank.sql </p>
-   
-<h3>5. Inicie o servidor local</h3>
-<p>php spark serve --host ip_server --port port_number</p>
-<p>Acesse no navegador: http://ip_server:port_number</p>
+<p><b>O servidor estará acessível em: http://ip_server:8080</b></p>
 
 <h4>📚 Rotas da Aplicação</h4>
 <h5>🔐 Autenticação</h5>
