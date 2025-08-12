@@ -114,11 +114,19 @@ class ActionsController extends BaseController
    {
       $this->model = model(PlantasModel::class);
       $post = $this->request->getPost(['name', 'id']);
-      if ($this->request->getMethod() == 'POST' && $this->validateData($post, ['id' => 'required', 'name' => 'required'])) {
+
+      $rules = [
+         'name' => [
+            'rules' => 'required|min_length[3]',
+            'errors' => ['required' => 'O nome é obrigatório', 'min_length' => 'Digite pelo menos 3 caracteres']
+         ]
+      ];
+
+      if ($this->request->getMethod() == 'POST' && $this->validateData($post, $rules)) {
          $this->model->updatePlanta(intval($post['id']), $post['name']);
       };
 
-      return redirect()->route('home');
+      return \redirect()->back()->withInput()->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
    }
 
    public function confirmaDeletar()

@@ -14,6 +14,7 @@
                <input type="number" name="id" id="id" value="<?= $id ?>" hidden>
                <label for="name" class="form-label">Nome:</label>
                <input type="text" name="name" id="name" value="<?= $planta['name'] ?>" class="form-control">
+               <small class="small"><?= session()->getTempdata('err')['name'] ?? '' ?></small>
             </div>
             <div class="mb-3">
                <button type="submit" class="btn btn-success">Editar Nome</button>
