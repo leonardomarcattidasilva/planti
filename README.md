@@ -3,10 +3,11 @@
 
 <h2>🚀 Tecnologias Utilizadas</h2>
 <ul>
-   <li>PHP 8.x</li>
-   <li>CodeIgniter 4</li>
-   <li>MySQL</li>
-   <li>Composer</li>
+   <li><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" width="20" height="20" /> PHP 8.x</li>
+   <li><img src="https://cdn.worldvectorlogo.com/logos/codeigniter.svg" width="20" height="20" /> CodeIgniter 4</li>
+   <li><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" width="20" height="20" /> MySQL</li>
+   <li><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/composer/composer-original.svg" width="20" height="20" /> Composer</li>
+   <li><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" width="20" height="20" /> Docker</li>
 </ul>
 
 <h3>📦 Instalação</h3>
