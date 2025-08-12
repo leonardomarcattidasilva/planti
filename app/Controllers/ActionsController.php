@@ -72,7 +72,7 @@ class ActionsController extends BaseController
 
    public function cadastrarTipo()
    {
-      $this->checkView('successTipo');
+      $this->checkView('success');
       $this->model = model(TiposModel::class);
       $post = $this->request->getPost([\trim('type')]);
 
@@ -209,15 +209,16 @@ class ActionsController extends BaseController
 
    public function cuidadosTodas()
    {
+      $post = $this->request->getPost(['title', 'action', 'start_date', 'deadline']);
 
-      $post = $this->request->getPost(['action']);
+   
 
       $this->model = \model(PlantasModel::class);
-      if (!empty($post)  && $this->validateData($post, ['action' => 'required'])) {
+      if (!empty($post)) {
          $todasPlantas = $this->model->getTodasID(\session()->get('id'));
          $this->model = model(AcoesModel::class);
          foreach ($todasPlantas as $key => $value) {
-            $this->model->adicionarAcao($value['id'], strval($this->request->getPost('action')));
+            $this->model->adicionarAcao($value['id'], $post['action'], $post['start_date'], $post['deadline'], $post['title']);
          };
          return redirect()->route('home');
       };

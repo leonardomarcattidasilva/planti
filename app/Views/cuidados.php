@@ -16,8 +16,8 @@
                <input type="text" name="title" id="title" class="form-control" />
             </div>
             <div class="mb-3">
-               <label for="acao" class="form-label">Cuidado:</label>
-               <textarea name="acao" id="acao" class="form-control" required cols="100" rows="5"></textarea>
+               <label for="action" class="form-label">Cuidado:</label>
+               <textarea name="action" id="action" class="form-control" required cols="100" rows="5"></textarea>
             </div>
             <div class="d-flex flex-row justify-content-around mb-3">
                <div>
