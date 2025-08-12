@@ -146,7 +146,32 @@ class ActionsController extends BaseController
       $this->checkView('success');
 
       $post = $this->request->getPost(['action', 'id_plant', 'start_date', 'deadline', 'title', 'id_plant']);
-      $validData = $this->validateData($post, ['id_plant' => 'required', 'action' => 'required'], ['action' => ['required' => 'O campo é obrigatório']]);
+
+
+      $rules = [
+         'id_plant' => [
+            'rules' => 'required|decimal',
+            'errors' => ['required' => 'O campo é obrigatório', 'decimal' => 'O código do ítem não existe']
+         ],
+         'action' => [
+            'rules' => 'required|string|min_length[30]|manx_length[256]',
+            'errors' => ['required' => 'O campo é obrigatório', 'string' => 'O campo deve ser um texto', 'min_length' => 'O texto deve ter pelo meno 30 caracteres', 'max_length' => 'O texto é muito longo']
+         ],
+         'title' => [
+            'rules' => 'required|string|min_length[10]',
+            'errors' => ['required' => 'O campo é obrigatório', 'string' => 'O campo deve ser um texto', 'min_length' => 'O campo deve ter pelo menos 10 caracteres']
+         ],
+         'start_date' => [
+            'rules' => 'required|string|',
+            'errors' => ['required' => 'O campo é obrigatório', 'string' => 'O campo deve ser uma data']
+         ],
+         'deadline' => [
+            'rules' => 'required|string|',
+            'errors' => ['required' => 'O campo é obrigatório', 'string' => 'O campo deve ser uma data']
+         ],
+      ];
+
+      $validData = $this->validateData($post, $rules);
 
       if ($this->request->getMethod() == 'POST' && $validData) {
          $this->model = model(AcoesModel::class);
@@ -159,7 +184,7 @@ class ActionsController extends BaseController
 
          return view('success', $this->data);
       }
-      return \redirect()->to('adicionarCuidados?id=' . $post['id_plant'])->with('errors', \session()->set('err', $this->validator->getErrors()));
+      return \redirect()->back()->withInput()->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
    }
 
    public function cuidadosTipo()
