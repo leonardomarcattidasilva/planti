@@ -26,7 +26,7 @@
 <p>Remova o comentário da linha de ambiente e o renomeie como production</p>
 <b>CI_ENVIRONMENT = production</b>
 
-
+<p>Em app/Config/App.php altere a linha para public string $baseURL = 'http://ip_server:8080'</p>
 <p><b>O servidor estará acessível em: http://ip_server:8080</b></p>
 
 <h4>📚 Rotas da Aplicação</h4>
