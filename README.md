@@ -19,7 +19,7 @@
 
 <h3>2. Build e execução do container</h3>
 <p>docker build -t planti .</p>
-<p>docker container run -d --name planti -h planti -p 8080:8080 -p 3305:3306 -v $(pwd):/app planti</p>
+<p>docker container run -d --name planti -h planti -p 8080:8080 -p 3305:3306 -v pasta_projeto:/app planti</p>
 
 <h3>3. Copie o arquivo de ambiente</h3>
 <p><Renomeie o arquivo .env_example para .env com os dados de conexão com seu MySQL./p>
