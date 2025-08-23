@@ -38,7 +38,6 @@ Método	Rota	Descrição
 <p>POST	/logupAction	Processa o cadastro</p>
 <p>GET	/logout	Logout</p>
 
-
 <h4>🌱 Plantas</h4>
 <h5>Método Rota Descrição</h5>
 <p>GET	/	Página inicial</p>
