@@ -154,7 +154,7 @@ class ActionsController extends BaseController
             'errors' => ['required' => 'O campo é obrigatório', 'decimal' => 'O código do ítem não existe']
          ],
          'action' => [
-            'rules' => 'required|string|min_length[30]|manx_length[256]',
+            'rules' => 'required|string|min_length[30]|max_length[256]',
             'errors' => ['required' => 'O campo é obrigatório', 'string' => 'O campo deve ser um texto', 'min_length' => 'O texto deve ter pelo meno 30 caracteres', 'max_length' => 'O texto é muito longo']
          ],
          'title' => [
