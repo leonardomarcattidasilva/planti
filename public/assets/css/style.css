@@ -38,12 +38,13 @@ hr {
 .alerts {
    position: absolute;
    top: 25%;
+   left: 1%;
    background-color: rgb(230, 50, 50);
    color: white;
-   padding: 15px 30px;
+   padding: 10px 15px;
    box-shadow: 0 0 10px black;
    border: 2px solid white;
-   width: 25vw;
+   border-radius: 50%;
 
    &:hover {
       border: 2px solid darkred;
@@ -181,10 +182,8 @@ footer a {
 }
 
 #headerRight .logout:hover {
-   color: darkred !important;
-   background-color: lightcoral !important;
+   background-color: darkred !important;
 }
-
 
 #headerRight .editUser:hover {
    color: darkblue !important;

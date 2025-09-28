@@ -12,15 +12,18 @@ class AcoesModel extends Model
 
    public function getAlerts(string $id)
    {
+      $subQuery = $this->db->table('plants')
+         ->select('id')
+         ->where('id_user', $id)
+         ->getCompiledSelect();
+
       $builder = $this->db->table('actions a');
       $builder->select('*');
+      $builder->join('plants p', 'p.id = a.id_plant');
       $builder->where('a.done', 0);
       $builder->where('deadline <=', Time::today()->toDateString());
-      $builder->whereIn('a.id_plant', function ($subQuery) use ($id) {
-         return $subQuery->select('id')
-            ->from('plants')
-            ->where('id_user', $id);
-      });
+      $builder->where("a.id_plant IN ($subQuery)", null, false);
+
       $query = $builder->get();
       return $query->getResult();
    }

@@ -52,8 +52,8 @@
                <li>
                   <hr class="dropdown-divider">
                </li>
-               <li class="bg-danger text-white">
-                  <a class="dropdown-item logout" href="<?= base_url('logout') ?>">
+               <li class="bg-danger">
+                  <a class="dropdown-item logout text-light" href="<?= base_url('logout') ?>">
                      <i class="fa-solid fa-power-off"></i> Logout
                   </a>
                </li>
@@ -63,7 +63,7 @@
       </div>
    <?php }
    if (!session()->get('id')) { ?>
-      <h1><?=$tab?></h1>
+      <h1><?= $tab ?></h1>
    <?php } ?>
 </header>
 

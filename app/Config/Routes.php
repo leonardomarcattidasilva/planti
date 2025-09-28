@@ -34,3 +34,4 @@ $routes->get('success', 'PagesController::success', ['as' => 'success']);
 $routes->get('login', 'PagesController::login', ['as' => 'login']);
 $routes->get('logup', 'PagesController::logup', ['as' => 'logup']);
 $routes->get('logout', 'AuthController::logout', ['as' => 'logout']);
+$routes->get('alerts', 'PagesController::alerts', ['as' => 'alerts']);

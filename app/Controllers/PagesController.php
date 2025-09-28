@@ -52,7 +52,6 @@ class PagesController extends BaseController
       }
 
       return \redirect()->route('login');
-      echo 'aaaaa';
    }
 
    public function cadastroPlanta()
@@ -225,5 +224,14 @@ class PagesController extends BaseController
       $this->checkView('successAction');
 
       return view('Views/successAction', $this->data);
+   }
+
+   public function alerts()
+   {
+      $this->data['tab'] = 'Planti - Alertas';
+      $this->data['title'] = 'Alertas';
+      $this->model = model(AcoesModel::class);
+      $this->data['alerts'] = $this->model->getAlerts(session()->get('id'));
+      return view('alerts', $this->data);
    }
 }

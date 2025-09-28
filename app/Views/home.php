@@ -31,21 +31,15 @@
          </form>
       </div>
    </section>
+   <?php
+   if (count($alerts) > 0) { ?>
+      <a href="<?= base_url('alerts') ?>">
+         <div class="alerts">
+            <i class="fa-solid fa-bell"></i>
+         </div>
+      </a>
+   <?php } ?>
 </main>
-
-<?php
-if (count($alerts) > 0) { ?>
-   <div class="alerts">
-      <ol>
-         <?php
-         foreach ($alerts as $key => $alert) { ?>
-            <li>
-               <a href="<?= site_url('detalhes?id=' . $alert->id_plant) ?>"><?= $alert->action ?></a>
-            </li>
-         <?php } ?>
-      </ol>
-   </div>
-<?php } ?>
 
 <?= $this->include('templates/footer') ?>
 <?= $this->endSection('content') ?>
